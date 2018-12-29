@@ -64,8 +64,4 @@ const removeCharacter = (id) => {
 
 loadCharacters()
 
-export { saveCharacters, loadCharacters, getCharacters }
-
-const id = characters[0].id
- 
-removeCharacter(id)
+export { saveCharacters, loadCharacters, getCharacters, createCharacter, updateCharacters, removeCharacter }
