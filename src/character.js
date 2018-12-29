@@ -39,8 +39,28 @@ const createCharacter = ({ birthday, name, memos }) => {
     return id
 }
 
+const updateCharacters = ({ id, birthday, name }) => {
+    const character = characters.find((character) => character.id === id)
+    if (!character) return 
+
+    if (typeof birthday === 'string')
+        character.birthday = birthday
+
+    if (typeof name === 'string')
+        character.name = name
+    
+    saveCharacters()
+}
+
+
 loadCharacters()
 
 export { saveCharacters, loadCharacters, getCharacters }
 
+const id = characters[0].id
 
+updateCharacters({
+    id: id,
+    birthday: '11/11',
+    name: 'santos'
+})
