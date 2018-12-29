@@ -52,14 +52,20 @@ const updateCharacters = ({ id, birthday, name }) => {
     saveCharacters()
 }
 
+const removeCharacter = (id) => {
+    const index = characters.findIndex((character) => character.id === id)
+    
+    if (index > -1) {
+        characters.splice(index, 1)
+        saveCharacters()
+    }
+}
+
 
 loadCharacters()
 
 export { saveCharacters, loadCharacters, getCharacters }
 
 const id = characters[0].id
-
-createCharacter({
-    birthday: '11/11',
-    name: 'new sample'
-})
+ 
+removeCharacter(id)
