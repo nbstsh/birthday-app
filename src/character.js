@@ -1,5 +1,7 @@
 let characters = []
 
+const getCharacters = () => characters
+
 const saveCharacters = () => {
     localStorage.setItem('characters', JSON.stringify(characters))
 }
@@ -14,8 +16,10 @@ const loadCharacters = () => {
     }
 }
 
-const getCharacters = () => characters
-
+const resetCharacters = () => {
+    characters = []
+    saveCharacters()
+}
 
 loadCharacters()
 
