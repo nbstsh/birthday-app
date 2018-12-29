@@ -1,3 +1,6 @@
+import uuidv4 from 'uuidv4'
+import moment from 'moment'
+
 let characters = []
 
 const getCharacters = () => characters
@@ -21,6 +24,23 @@ const resetCharacters = () => {
     saveCharacters()
 }
 
+const createCharacter = ({ birthday, name, memos }) => {
+    const id = uuidv4()
+    characters.push({
+        id,
+        birthday,
+        name,
+        memos,
+        createdAt: moment().valueOf(),
+        updatedAt: moment().valueOf()
+    })
+    saveCharacters()
+
+    return id
+}
+
 loadCharacters()
 
 export { saveCharacters, loadCharacters, getCharacters }
+
+
