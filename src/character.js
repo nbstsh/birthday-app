@@ -24,7 +24,7 @@ const resetCharacters = () => {
     saveCharacters()
 }
 
-const createCharacter = ({ birthday, name, memos }) => {
+const createCharacter = ({ birthday, name, memos = [] }) => {
     const id = uuidv4()
     characters.push({
         id,
@@ -59,8 +59,7 @@ export { saveCharacters, loadCharacters, getCharacters }
 
 const id = characters[0].id
 
-updateCharacters({
-    id: id,
+createCharacter({
     birthday: '11/11',
-    name: 'santos'
+    name: 'new sample'
 })
