@@ -1,0 +1,56 @@
+.display {
+
+    width: 80vw;
+    margin: 5rem auto;
+    padding: 2rem;
+    box-shadow: 0 0 1px 1px rgba($color-black, .15);
+    border-radius: 2px;
+    position: relative;
+
+    &__header {
+        // border: solid 1px gray;
+        text-align: center;
+        display: block;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    &__body {
+        // background-color:rgb(252, 252, 252);
+        // border: solid 1px gray;
+        border-radius: 2px;
+        padding: 1rem;
+        position: relative;
+    }
+
+
+    &__date-box {
+        box-shadow: 0 0 1px 1px rgba($color-black, .15);
+        display: inline-block;
+        padding: 1rem;
+        min-width: 20rem;
+        width: 10%;
+        height: 10rem;
+        margin: 1.5rem;
+    }
+
+    &__date {
+        margin-bottom: 1rem;
+    }
+
+    &__character {
+
+    }
+}
+
+/*
+<h2 class="display__header">
+11月
+</h2>
+<div class="display__body">
+<div class="display__date-box">
+    <div class="display__date">11日</div>
+    <div class="display__character">モンキー・D・ルフィ</div>
+</div>
+</div>
+*/

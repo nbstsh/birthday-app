@@ -1,0 +1,28 @@
+.row {
+    max-width: $grid-width;
+    margin: 0 auto;
+
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical; 
+    }
+
+    @include clearfix;
+
+    [class^="col-"] {
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    // col-x-of-y (x: $colNum, y: $totalNum) 
+    @for $totalNum from $min-col-total-number through $max-col-total-number {
+        @for $colNum from 1 through $totalNum - 1{
+            .col-#{$colNum}-of-#{$totalNum} {
+                width: getColWidth($colNum, $totalNum, $gutter-horizontal);
+            }
+        }
+    }
+
+}
