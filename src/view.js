@@ -14,7 +14,7 @@ import { sortByBirthday } from './sort'
 }
 
 
-const generateDateBoxDOM = (date, names) => {
+const generateDateBoxDOM = (date, characters) => {
     const dateBoxEl = document.createElement('div')
     dateBoxEl.classList.add(classNames.display.dateBox)
 
@@ -25,17 +25,18 @@ const generateDateBoxDOM = (date, names) => {
     dateBoxEl.appendChild(dateEl)
 
     // create character name element
-    names.forEach((name) => {
-        dateBoxEl.appendChild(generateCharacterEl(name))
+    characters.forEach((character) => {
+        dateBoxEl.appendChild(generateCharacterEl(character))
     })
 
     return dateBoxEl
 }
 
-const generateCharacterEl = (name) => {
+const generateCharacterEl = ({ id, name }) => {
     const characterEl = document.createElement('div')
     characterEl.textContent = name
     characterEl.classList.add(classNames.display.character)
+    characterEl.dataset.characterId = id
     return characterEl
 }
 
@@ -53,8 +54,7 @@ const generateBodyDOM = (filteredDates) => {
     bodyEl.classList.add(classNames.display.body)
 
     filteredDates.forEach(({date, characters}) => {
-        const names = characters.map((character) => character.name)
-        bodyEl.appendChild(generateDateBoxDOM(date, names))
+        bodyEl.appendChild(generateDateBoxDOM(date, characters))
     })
 
     return bodyEl
