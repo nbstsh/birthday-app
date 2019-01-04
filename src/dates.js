@@ -18,5 +18,9 @@ const generateDates = (sortedCharacters) => {
     return dates
 }
 
+const getFilteredDates = (dates, { month }) => {
+    return dates.filter((date) => date.month === month )
+}
 
-export { generateDates }
+
+export { generateDates, getFilteredDates }
