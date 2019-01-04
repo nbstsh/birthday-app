@@ -13,7 +13,12 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
     e.preventDefault()
     const elements = e.target.elements
     const name = elements.characterName.value
-    const birthday = `${elements.month.value}/${elements.date.value}`
+    const month = elements.month.value
+    const date = elements.date.value
 
-    createCharacter({ name, birthday })    
+    if (name === '' || month === '' || date === '') return 
+
+    const birthday = `${month}/${date}`
+    createCharacter({ name, birthday })
+    initializeIndexPage(month)
 })
