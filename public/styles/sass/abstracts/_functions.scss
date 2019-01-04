@@ -1,0 +1,9 @@
+@function getColOneWidth($colTotalNum, $gutterHorizontal) {
+    @return calc((100% - #{$gutterHorizontal} * (#{$colTotalNum} - 1)) / #{$colTotalNum});
+}
+
+@function getColWidth($colNum, $colTotalNum, $gutterHorizontal) {
+    $colOneWidth : getColOneWidth($colTotalNum, $gutter-horizontal);
+    $gutterHorizontal : $gutterHorizontal * ($colNum - 1);
+    @return calc(#{$colNum} * #{$colOneWidth} + #{$gutterHorizontal})
+}
