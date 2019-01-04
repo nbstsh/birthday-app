@@ -1,34 +1,15 @@
-import { saveCharacters, loadCharacters, getCharacters, createCharacter } from './character'
-import { createMemo, updateMemo, removeMemo } from './memos'
-import { generateDates } from './dates'
+
+import { getCharacters, createCharacter } from './character'
+import { renderDisplay } from './view'
+import { generateDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
 
-const charas = getCharacters()
-console.log(charas)
 
-// charas.push(
-//     {
-//         birthday: '12/11',
-//         name: 'sample',
-//         memos: ['memo1', 'memo2'],
-//         createAt: Date.now(),
-//         updatedAt: Date.now()
-//     }
-// )
-// saveCharacters()
+document.querySelector('#character-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const elements = e.target.elements
+    const name = elements.characterName.value
+    const birthday = `${elements.month.value}/${elements.date.value}`
 
-
-// createMemo('c4607e31-55e5-406b-ae62-23e705b40bc9', 'hgoehogehogehoge')
-// updateMemo('c4607e31-55e5-406b-ae62-23e705b40bc9', {
-//     id: '746a8363-5d13-4621-9ecc-66b76b3ce49d',
-//     text: 'edited'
-// })
-
-// removeMemo('c4607e31-55e5-406b-ae62-23e705b40bc9', '746a8363-5d13-4621-9ecc-66b76b3ce49d')
-
-const sortedChars = sortByBirthday(charas)
-console.log(sortedChars)
-
-
-const dates = generateDates(sortedChars)
-console.log(dates)
+    createCharacter({ name, birthday })    
+})
