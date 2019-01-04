@@ -1,8 +1,12 @@
 
 import { getCharacters, createCharacter } from './character'
-import { renderDisplay } from './view'
+import { initializeIndexPage } from './view'
 import { generateDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
+
+
+const initialMonth = '1'
+initializeIndexPage(initialMonth)
 
 
 document.querySelector('#character-form').addEventListener('submit', (e) => {

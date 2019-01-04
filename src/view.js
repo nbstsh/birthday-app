@@ -1,13 +1,6 @@
-
-/*
-div.display
-	h2.display__header
-	div.display__body
-		div.display__date-box
-			div.display__date
-			div.display__character 
-  
- */
+import { getCharacters } from './character'
+import { generateDates, getFilteredDates } from './dates'
+import { sortByBirthday } from './sort'
 
  const classNames = {
     display: {
@@ -78,4 +71,15 @@ const renderDisplay = (month, filteredDates) => {
     displayEl.appendChild(bodyEl)
 }
 
- export { generateDateBoxDOM, generateHeaderDOM, generateBodyDOM, renderDisplay}
+
+const initializeIndexPage = (month) => {
+    const characters = getCharacters()
+    console.log(characters)
+
+    const dates = generateDates(sortByBirthday(characters))
+    const filteredDates = getFilteredDates(dates, { month })
+
+    renderDisplay(month, filteredDates)
+}
+
+ export { generateDateBoxDOM, generateHeaderDOM, generateBodyDOM, renderDisplay, initializeIndexPage}
