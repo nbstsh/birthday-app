@@ -1,6 +1,7 @@
-const dates = []
 
 const generateDates = (sortedCharacters) => {
+    const dates = []
+
     sortedCharacters.forEach((character) => {
         const birthday = character.birthday.split('/')
         const dateObj = dates.find((date) => date.month === birthday[0] && date.date === birthday[1])

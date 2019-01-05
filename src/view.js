@@ -17,6 +17,7 @@ import { sortByBirthday } from './sort'
 const generateDateBoxDOM = (date, characters) => {
     const dateBoxEl = document.createElement('div')
     dateBoxEl.classList.add(classNames.display.dateBox)
+    dateBoxEl.innerHTML = ''
 
     // create date element
     const dateEl = document.createElement('div')
@@ -63,6 +64,7 @@ const generateBodyDOM = (filteredDates) => {
 
 const renderDisplay = (month, filteredDates) => {
     const displayEl = document.querySelector('#display')
+    displayEl.innerHTML = ''
 
     const headerEl = generateHeaderDOM(month)
     displayEl.appendChild(headerEl)
