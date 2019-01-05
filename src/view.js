@@ -1,13 +1,6 @@
-
-/*
-div.display
-	h2.display__header
-	div.display__body
-		div.display__date-box
-			div.display__date
-			div.display__character 
-  
- */
+import { getCharacters } from './character'
+import { generateDates, getFilteredDates } from './dates'
+import { sortByBirthday } from './sort'
 
  const classNames = {
     display: {
@@ -21,7 +14,7 @@ div.display
 }
 
 
-const generateDateBoxDOM = (date, names) => {
+const generateDateBoxDOM = (date, characters) => {
     const dateBoxEl = document.createElement('div')
     dateBoxEl.classList.add(classNames.display.dateBox)
 
@@ -32,17 +25,18 @@ const generateDateBoxDOM = (date, names) => {
     dateBoxEl.appendChild(dateEl)
 
     // create character name element
-    names.forEach((name) => {
-        dateBoxEl.appendChild(generateCharacterEl(name))
+    characters.forEach((character) => {
+        dateBoxEl.appendChild(generateCharacterEl(character))
     })
 
     return dateBoxEl
 }
 
-const generateCharacterEl = (name) => {
+const generateCharacterEl = ({ id, name }) => {
     const characterEl = document.createElement('div')
     characterEl.textContent = name
     characterEl.classList.add(classNames.display.character)
+    characterEl.dataset.characterId = id
     return characterEl
 }
 
@@ -60,8 +54,7 @@ const generateBodyDOM = (filteredDates) => {
     bodyEl.classList.add(classNames.display.body)
 
     filteredDates.forEach(({date, characters}) => {
-        const names = characters.map((character) => character.name)
-        bodyEl.appendChild(generateDateBoxDOM(date, names))
+        bodyEl.appendChild(generateDateBoxDOM(date, characters))
     })
 
     return bodyEl
@@ -78,4 +71,28 @@ const renderDisplay = (month, filteredDates) => {
     displayEl.appendChild(bodyEl)
 }
 
- export { generateDateBoxDOM, generateHeaderDOM, generateBodyDOM, renderDisplay}
+
+const initializeIndexPage = (month) => {
+    const characters = getCharacters()
+    console.log(characters)
+
+    const dates = generateDates(sortByBirthday(characters))
+    const filteredDates = getFilteredDates(dates, { month })
+
+    renderDisplay(month, filteredDates)
+}
+
+
+const setCharacterForm = (name, month, date, buttonText = 'create') => {
+    const characterFormEl = document.querySelector('#character-form')
+
+    characterFormEl.children.characterName.value = name
+    characterFormEl.children.month.value = month
+    characterFormEl.children.date.value = date
+
+    characterFormEl.children.submitButton.textContent = buttonText
+}
+
+const resetCharacterForm = () => { setCharacterForm('', 1, 1) }
+
+ export { renderDisplay, initializeIndexPage, setCharacterForm, resetCharacterForm }

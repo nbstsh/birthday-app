@@ -1,34 +1,48 @@
-import { saveCharacters, loadCharacters, getCharacters, createCharacter } from './character'
-import { createMemo, updateMemo, removeMemo } from './memos'
-import { generateDates } from './dates'
+
+import { getCharacters, createCharacter, updateCharacters } from './character'
+import { initializeIndexPage, setCharacterForm, resetCharacterForm } from './view'
+import { generateDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
 
-const charas = getCharacters()
-console.log(charas)
 
-// charas.push(
-//     {
-//         birthday: '12/11',
-//         name: 'sample',
-//         memos: ['memo1', 'memo2'],
-//         createAt: Date.now(),
-//         updatedAt: Date.now()
-//     }
-// )
-// saveCharacters()
+const initialMonth = '1'
+initializeIndexPage(initialMonth)
 
 
-// createMemo('c4607e31-55e5-406b-ae62-23e705b40bc9', 'hgoehogehogehoge')
-// updateMemo('c4607e31-55e5-406b-ae62-23e705b40bc9', {
-//     id: '746a8363-5d13-4621-9ecc-66b76b3ce49d',
-//     text: 'edited'
-// })
+document.querySelector('#character-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const elements = e.target.elements
+    const name = elements.characterName.value
+    const month = elements.month.value
+    const date = elements.date.value
 
-// removeMemo('c4607e31-55e5-406b-ae62-23e705b40bc9', '746a8363-5d13-4621-9ecc-66b76b3ce49d')
+    if (name === '' || month === '' || date === '') return 
 
-const sortedChars = sortByBirthday(charas)
-console.log(sortedChars)
+    const birthday = `${month}/${date}`
+    const id = e.target.dataset.characterId
 
+    if (id) {
+        updateCharacters({ id, name, birthday })
+    } else {
+        createCharacter({ name, birthday })
+    }
+    
+    resetCharacterForm()
+    initializeIndexPage(month)
+})
 
-const dates = generateDates(sortedChars)
-console.log(dates)
+// set edit form value
+document.querySelectorAll('.display__character').forEach((element) => {
+    element.addEventListener('click', (e) => {
+        const characterId = e.target.dataset.characterId
+        const characterFormEl = document.querySelector('#character-form')
+        characterFormEl.dataset.characterId = characterId
+
+        const character = getCharacters().find((character) => character.id === characterId)
+        const birthday = character.birthday.split('/')
+        const month = birthday[0]
+        const date = birthday[1]
+    
+        setCharacterForm(character.name, month, date, 'edit')
+    })
+})
