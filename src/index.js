@@ -1,6 +1,6 @@
 
-import { getCharacters, createCharacter } from './character'
-import { initializeIndexPage } from './view'
+import { getCharacters, createCharacter, updateCharacters } from './character'
+import { initializeIndexPage, setCharacterForm, resetCharacterForm } from './view'
 import { generateDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
 
@@ -19,15 +19,19 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
     if (name === '' || month === '' || date === '') return 
 
     const birthday = `${month}/${date}`
-    const characterId = e.target.dataset.characterId
+    const id = e.target.dataset.characterId
 
-    console.log(characterId)
-
-    createCharacter({ name, birthday })
+    if (id) {
+        updateCharacters({ id, name, birthday })
+    } else {
+        createCharacter({ name, birthday })
+    }
+    
+    resetCharacterForm()
     initializeIndexPage(month)
 })
 
-
+// set edit form value
 document.querySelectorAll('.display__character').forEach((element) => {
     element.addEventListener('click', (e) => {
         const characterId = e.target.dataset.characterId
@@ -38,9 +42,7 @@ document.querySelectorAll('.display__character').forEach((element) => {
         const birthday = character.birthday.split('/')
         const month = birthday[0]
         const date = birthday[1]
-        characterFormEl.children.characterName.value = character.name
-        characterFormEl.children.month.value = month
-        characterFormEl.children.date.value = date
     
+        setCharacterForm(character.name, month, date, 'edit')
     })
 })

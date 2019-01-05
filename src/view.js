@@ -82,4 +82,17 @@ const initializeIndexPage = (month) => {
     renderDisplay(month, filteredDates)
 }
 
- export { generateDateBoxDOM, generateHeaderDOM, generateBodyDOM, renderDisplay, initializeIndexPage}
+
+const setCharacterForm = (name, month, date, buttonText = 'create') => {
+    const characterFormEl = document.querySelector('#character-form')
+
+    characterFormEl.children.characterName.value = name
+    characterFormEl.children.month.value = month
+    characterFormEl.children.date.value = date
+
+    characterFormEl.children.submitButton.textContent = buttonText
+}
+
+const resetCharacterForm = () => { setCharacterForm('', 1, 1) }
+
+ export { renderDisplay, initializeIndexPage, setCharacterForm, resetCharacterForm }
