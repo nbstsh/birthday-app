@@ -58,6 +58,11 @@ document.querySelector('#filter-month').addEventListener('input', (e) => {
 
 document.querySelector('#filter-date').addEventListener('input', (e) => {
     setFilters({ date: e.target.value })
-    console.log(getFilters())
+    initializeIndexPage()
+})
+
+
+document.querySelector('#filter-name').addEventListener('input', (e) => {
+    setFilters({ name: e.target.value })
     initializeIndexPage()
 })

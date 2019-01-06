@@ -76,11 +76,10 @@ const renderDisplay = (month, filteredDates) => {
 
 
 const initializeIndexPage = () => {
-    const characters = getCharacters()
     const filters = getFilters()
 
     const filteredCharacters = getFilteredCharacters(filters)
-    initDates(sortByBirthday(characters))
+    initDates(sortByBirthday(filteredCharacters))
     const filteredDates = getFilteredDates(filters)
 
     renderDisplay(filters.month, filteredDates)
