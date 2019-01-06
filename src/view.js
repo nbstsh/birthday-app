@@ -1,5 +1,5 @@
-import { getCharacters } from './character'
-import { generateDates, getFilteredDates } from './dates'
+import { getCharacters, getFilteredCharacters } from './character'
+import { initDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
 import { getFilters } from './filters'
 
@@ -77,9 +77,11 @@ const renderDisplay = (month, filteredDates) => {
 
 const initializeIndexPage = () => {
     const characters = getCharacters()
-    const dates = generateDates(sortByBirthday(characters))
     const filters = getFilters()
-    const filteredDates = getFilteredDates(dates, filters)
+
+    const filteredCharacters = getFilteredCharacters(filters)
+    initDates(sortByBirthday(characters))
+    const filteredDates = getFilteredDates(filters)
 
     renderDisplay(filters.month, filteredDates)
 }

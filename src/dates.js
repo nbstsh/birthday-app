@@ -1,6 +1,11 @@
+let dates = []
 
-const generateDates = (sortedCharacters) => {
-    const dates = []
+
+const getDates = () => dates
+
+
+const initDates = (sortedCharacters) => {
+    dates = []
 
     sortedCharacters.forEach((character) => {
         const birthday = character.birthday.split('/')
@@ -16,15 +21,20 @@ const generateDates = (sortedCharacters) => {
             })
         }
     })
+}
+
+
+const generateDates = (sortedCharacters) => {
+    initDates(sortedCharacters)
     return dates
 }
 
-const getFilteredDates = (dates, { month, date, name }) => {
+
+const getFilteredDates = ({ month, date }) => {
     if (month) dates = dates.filter((dateObj) => dateObj.month === month)
     if (date) dates = dates.filter((dateObj) => dateObj.date === date)
-    if (name) dates = dates.filter(({ character }) => character.name === character)
     return dates
 }
 
 
-export { generateDates, getFilteredDates }
+export { generateDates, getFilteredDates, initDates, getDates }
