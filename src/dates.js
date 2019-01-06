@@ -19,8 +19,11 @@ const generateDates = (sortedCharacters) => {
     return dates
 }
 
-const getFilteredDates = (dates, { month }) => {
-    return dates.filter((date) => date.month === month )
+const getFilteredDates = (dates, { month, date, name }) => {
+    if (month) dates = dates.filter((date) => date.month === month)
+    if (date) dates = dates.filter((date) => date.date === date)
+    if (name) dates = dates.filter(({ character }) => character.name === character)
+    return dates
 }
 
 

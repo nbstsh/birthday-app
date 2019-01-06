@@ -1,6 +1,6 @@
 const filters = {
     month: '1',
-    date: '1',
+    date: '',
     name: ''
 }
 
