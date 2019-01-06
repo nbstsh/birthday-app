@@ -3,10 +3,10 @@ import { getCharacters, createCharacter, updateCharacters } from './character'
 import { initializeIndexPage, setCharacterForm, resetCharacterForm } from './view'
 import { generateDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
+import { getFilters, setFilters } from './filters'
 
 
-const initialMonth = '1'
-initializeIndexPage(initialMonth)
+initializeIndexPage()
 
 
 document.querySelector('#character-form').addEventListener('submit', (e) => {
@@ -27,8 +27,9 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
         createCharacter({ name, birthday })
     }
     
+    setFilters({ month })
     resetCharacterForm()
-    initializeIndexPage(month)
+    initializeIndexPage()
 })
 
 // set edit form value
@@ -50,5 +51,13 @@ document.querySelectorAll('.display__character').forEach((element) => {
 
 // filter month
 document.querySelector('#filter-month').addEventListener('input', (e) => {
-    initializeIndexPage(e.target.value)
+    setFilters({ month: e.target.value})
+    initializeIndexPage()
+})
+
+
+document.querySelector('#filter-date').addEventListener('input', (e) => {
+    setFilters({ date: e.target.value })
+    console.log(getFilters())
+    initializeIndexPage()
 })
