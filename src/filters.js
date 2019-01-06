@@ -6,11 +6,14 @@ const filters = {
 
 
 const setFilters = ({ month, date, name }) => {
-    if ( typeof month === 'string' && Number(month) >= 1 && Number(month) <= 12) {
+    const isValidMonth = typeof month === 'string' && Number(month) >= 1 && Number(month) <= 12
+    const isValideDate = typeof date === 'string' && Number(date) >= 1 && Number(date) <= 31
+
+    if (isValidMonth) {
         filters.month = month
     }
 
-    if (typeof date === 'string' && Number(date) >= 1 && Number(date) <= 31) {
+    if (isValideDate || date === '') {
         filters.date = date
     }
 
