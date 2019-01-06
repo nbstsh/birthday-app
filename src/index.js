@@ -46,3 +46,9 @@ document.querySelectorAll('.display__character').forEach((element) => {
         setCharacterForm(character.name, month, date, 'edit')
     })
 })
+
+
+// filter month
+document.querySelector('#filter-month').addEventListener('input', (e) => {
+    initializeIndexPage(e.target.value)
+})
