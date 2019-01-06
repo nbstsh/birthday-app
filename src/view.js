@@ -1,6 +1,7 @@
-import { getCharacters } from './character'
-import { generateDates, getFilteredDates } from './dates'
+import { getCharacters, getFilteredCharacters } from './character'
+import { initDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
+import { getFilters } from './filters'
 
  const classNames = {
     display: {
@@ -74,14 +75,14 @@ const renderDisplay = (month, filteredDates) => {
 }
 
 
-const initializeIndexPage = (month) => {
-    const characters = getCharacters()
-    console.log(characters)
+const initializeIndexPage = () => {
+    const filters = getFilters()
 
-    const dates = generateDates(sortByBirthday(characters))
-    const filteredDates = getFilteredDates(dates, { month })
+    const filteredCharacters = getFilteredCharacters(filters)
+    initDates(sortByBirthday(filteredCharacters))
+    const filteredDates = getFilteredDates(filters)
 
-    renderDisplay(month, filteredDates)
+    renderDisplay(filters.month, filteredDates)
 }
 
 

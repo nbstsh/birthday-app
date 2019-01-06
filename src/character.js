@@ -61,7 +61,11 @@ const removeCharacter = (id) => {
     }
 }
 
+const getFilteredCharacters = ({ name }) => {
+    return characters.filter((character) => character.name.includes(name))
+}
+
 
 loadCharacters()
 
-export { saveCharacters, loadCharacters, getCharacters, createCharacter, updateCharacters, removeCharacter }
+export { saveCharacters, loadCharacters, getCharacters, createCharacter, updateCharacters, removeCharacter, getFilteredCharacters }
