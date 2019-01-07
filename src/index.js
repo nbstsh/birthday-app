@@ -33,8 +33,8 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
 })
 
 // set edit form value
-document.querySelectorAll('.display__character').forEach((element) => {
-    element.addEventListener('click', (e) => {
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('display__character')) {
         const characterId = e.target.dataset.characterId
         const characterFormEl = document.querySelector('#character-form')
         characterFormEl.dataset.characterId = characterId
@@ -45,9 +45,16 @@ document.querySelectorAll('.display__character').forEach((element) => {
         const date = birthday[1]
     
         setCharacterForm(character.name, month, date, 'edit')
-    })
+    }
 })
 
+
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'sample') {
+        alert('cliked!')
+    }
+})
+    
 
 // filter month
 document.querySelector('#filter-month').addEventListener('input', (e) => {
