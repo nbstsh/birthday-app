@@ -66,3 +66,19 @@ document.querySelector('#filter-name').addEventListener('input', (e) => {
     setFilters({ name: e.target.value })
     initializeIndexPage()
 })
+
+// to previous month
+document.querySelector('#previous-month').addEventListener('click', (e) => {
+    const currentMonth = getFilters().month
+    const previousMonth = currentMonth === '1' ? '12' : Number(currentMonth) - 1 + ''
+    setFilters({ month: previousMonth })
+    initializeIndexPage()
+})
+
+// to next month
+document.querySelector('#next-month').addEventListener('click', (e) => {
+    const currentMonth = getFilters().month
+    const nextMonth = currentMonth === '12' ? '1' : Number(currentMonth) + 1 + ''
+    setFilters({ month: nextMonth })
+    initializeIndexPage()
+})
