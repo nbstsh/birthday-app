@@ -10,7 +10,8 @@ import { getFilters } from './filters'
         body: 'display__body',
         dateBox: 'display__date-box',
         date: 'display__date',
-        character: 'display__character'
+        nameList: 'display__name-list',
+        nameItem: 'display__name-item'
     }
 }
 
@@ -27,19 +28,22 @@ const generateDateBoxDOM = (date, characters) => {
     dateBoxEl.appendChild(dateEl)
 
     // create character name element
+    const nameListEl = document.createElement('ul')
+    nameListEl.classList.add(classNames.display.nameList)
     characters.forEach((character) => {
-        dateBoxEl.appendChild(generateCharacterEl(character))
+        nameListEl.appendChild(generateNameItemDOM(character))
     })
+    dateBoxEl.append(nameListEl)
 
     return dateBoxEl
 }
 
-const generateCharacterEl = ({ id, name }) => {
-    const characterEl = document.createElement('div')
-    characterEl.textContent = name
-    characterEl.classList.add(classNames.display.character)
-    characterEl.dataset.characterId = id
-    return characterEl
+const generateNameItemDOM = ({ id, name }) => {
+    const nameItem = document.createElement('li')
+    nameItem.textContent = name
+    nameItem.classList.add(classNames.display.nameItem)
+    nameItem.dataset.characterId = id
+    return nameItem
 }
 
 
