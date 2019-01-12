@@ -13,11 +13,11 @@
     
     &:hover {
         background-color: rgba($color-black, .7);
-        transform: translateY(-10%);
+        // transform: translateY(-10%);
     }
 
     &:active {
-        transform: translateY(0);
+        // transform: translateY(0);
     }
 
     &::after {
@@ -40,4 +40,25 @@
         @include absCenter;
     }
 
+}
+
+.icon-checkbox{
+    // opacity: 0;
+    float: right;
+    transform: translate(1.5rem, 0);
+
+    & + .icon {
+        position: relative;
+        transition: all .5s;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+    &:checked + .icon {
+        transform: rotate(360deg);
+    }
+
+    
 }

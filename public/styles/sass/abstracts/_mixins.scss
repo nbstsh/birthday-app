@@ -18,3 +18,26 @@
         clear: both;
     }
 }
+
+@mixin iconCheckedAnimation($second) {
+
+    & .icon-checkbox{
+        // opacity: 0;
+        float: right;
+        transform: translate(1.5rem, 0);
+
+        & + .icon {
+            position: relative;
+            transition: all $second;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        &:checked + .icon {
+            transform: rotate(360deg);
+            @content;
+        }
+    }
+}

@@ -31,6 +31,10 @@
         & li {
             margin: 0 1rem;
         }
+        
+        @include iconCheckedAnimation(.2s) {
+            left: 3rem;
+        }
     }
 
     &__body {
@@ -70,6 +74,7 @@
     &__name-item {
     }
 }
+
 
 /*
 
