@@ -1,5 +1,6 @@
 .display {
 
+    width: 80%;
     max-width: 70rem;
     margin: 0 auto;
 
@@ -7,17 +8,22 @@
     &__header {
         text-align: center;
         padding: 1rem 0;
-        border-radius: 3px;
+        border-radius: 3px 3px 0 0;
         box-shadow: 0 .1rem .5rem rgba($color-black, .3);
+        position: fixed;
+        width: 80%;
+        top: 0;
+        max-width: 70rem;
+        z-index: 100;
+        background-color: $color-white;
     }
 
     &__body {
         margin-top: 2rem;
-        min-height: 50rem;
+        min-height: 80vh;
         padding: 3rem 5rem;
         border-radius: 3px;
         box-shadow: 0 .1rem .5rem rgba($color-black, .3);
-
     }
 
 
@@ -52,18 +58,6 @@
 
 /*
 
-修正前
-
-div.display
-	h2.display__header
-	div.display__body
-		div.display__date-box
-			div.display__date
-            div.display__character
-
-修正後
-
-
 div.display
 	h2.display__header
 	div.display__body
@@ -72,13 +66,4 @@ div.display
             ul.display__name-list
                 li.display__name-item
 
-<h2 class="display__header">
-11月
-</h2>
-<div class="display__body">
-<div class="display__date-box">
-    <div class="display__date">11日</div>
-    <div class="display__character">モンキー・D・ルフィ</div>
-</div>
-</div>
 */
