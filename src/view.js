@@ -15,6 +15,12 @@ import { getFilters } from './filters'
     }
 }
 
+const idNames = {
+    display: {
+        body: 'displayBody'
+    }
+}
+
 
 const generateDateBoxDOM = (date, characters) => {
     const dateBoxEl = document.createElement('div')
@@ -54,10 +60,16 @@ const generateHeaderDOM = (month) => {
     return headerEl
 }
 
+const initializeHeaderDOM = (month) => {
+    const headerMonthEl = document.querySelector('#header-month')
+    headerMonthEl.textContent = `${month}月` 
+}
+
 
 const generateBodyDOM = (filteredDates) => {
     const bodyEl = document.createElement('div')
     bodyEl.classList.add(classNames.display.body)
+    bodyEl.id = idNames.display.body
 
     filteredDates.forEach(({date, characters}) => {
         bodyEl.appendChild(generateDateBoxDOM(date, characters))
@@ -69,12 +81,13 @@ const generateBodyDOM = (filteredDates) => {
 
 const renderDisplay = (month, filteredDates) => {
     const displayEl = document.querySelector('#display')
-    displayEl.innerHTML = ''
 
-    const headerEl = generateHeaderDOM(month)
-    displayEl.appendChild(headerEl)
+    initializeHeaderDOM(month)
 
-    const bodyEl = generateBodyDOM(filteredDates)
+    let bodyEl = document.getElementById(idNames.display.body)
+    if (bodyEl) bodyEl.remove()
+    
+    bodyEl = generateBodyDOM(filteredDates)
     displayEl.appendChild(bodyEl)
 }
 
