@@ -41,3 +41,15 @@
         }
     }
 }
+
+@mixin uTriggeredAnimation($second) {
+    & .u-trigger {
+        & + .u-target {
+            transition: all $second;
+        }
+
+        &:checked + .u-target {
+            @content;
+        }
+    }
+}

@@ -44,8 +44,7 @@
 
 .icon-checkbox{
     // opacity: 0;
-    float: right;
-    transform: translate(1.5rem, 0);
+    position: absolute;
 
     & + .icon {
         position: relative;

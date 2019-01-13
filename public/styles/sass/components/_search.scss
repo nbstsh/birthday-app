@@ -1,0 +1,131 @@
+.search {
+    
+    position: fixed;
+    top: 8rem;
+    width: 80%;
+    max-width: 70rem;
+    text-align: center;
+    z-index: 100;
+    padding: 1rem 0;
+    background-color: #f1f1f1;
+
+    box-shadow: 0 .1rem .5rem rgba($color-black, .3);
+
+    &__box {
+        padding: 1rem 5rem;
+
+        &--month {
+            @include uTriggeredAnimation(.2s) {
+                transform: scale(1.2);
+                color: $color-black;
+
+                &::after {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+
+        &--character {
+            text-align: start;
+        }
+    }
+
+    &__wrap {
+        background-color: rgba($color-white, .2);
+        padding: 2rem 3.5rem;
+        box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+        border-radius: 10rem;
+    }
+
+    &__month-number {
+        display: inline-block;
+        border-radius: 50%;
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.5rem;
+        transition: all .3s;
+        cursor: pointer;
+        color: rgba($color-black, .7);
+        position: relative;
+
+        &:hover {
+            transform: scale(1.2);
+            color: rgba($color-black, 1);
+        }
+
+        &:active {
+            transform: scale(1.8) rotate(40deg);
+        }
+
+        &::after {
+            content: '';
+            display: inline-block;
+            border-radius: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            transition: all .3s;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 1px solid gray;
+            opacity: 0;
+            transform: scale(0);
+        }
+    }
+
+
+    &__input {
+        padding: 2rem 1rem;
+        height: 3rem;
+        width: 5rem;
+        letter-spacing: .5rem;
+        outline: none;
+        font-size: inherit;
+        border-radius: 3px;
+        border: none;
+
+        &--date {
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        &--name {
+            width: 43rem;
+            margin-left: 3rem;
+        }
+    }
+
+    // &__date {
+    //     padding: 2rem 1rem;
+    //     height: 3rem;
+    //     width: 5rem;
+    //     letter-spacing: .5rem;
+    //     outline: none;
+    //     font-size: inherit;
+    //     border-radius: 3px;
+    //     border: none;
+
+    //     &::-webkit-inner-spin-button,
+    //     &::-webkit-outer-spin-button {
+    //         -webkit-appearance: none;
+    //         margin: 0;
+    //     }
+    // }
+
+    // &__name {
+    //     padding: 2rem 1rem;
+    //     height: 3rem;
+    //     width: 43rem;
+    //     letter-spacing: .5rem;
+    //     outline: none;
+    //     font-size: inherit;
+    //     border-radius: 3px;
+    //     border: 1px solid gray;
+    //     margin-left: 3rem;
+    // }
+}
