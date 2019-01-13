@@ -8,13 +8,18 @@
     z-index: 100;
     padding: 1rem 0;
     background-color: #f1f1f1;
-
     box-shadow: 0 .1rem .5rem rgba($color-black, .3);
 
     &__box {
         padding: 1rem 5rem;
 
+        // animation setting
+        opacity: 0;
+        transform-origin: left bottom;
+        transform: translate(-50%, -80%) scale(0) rotate(-30deg);
+
         &--month {
+            // animation for month number clicked
             @include uTriggeredAnimation(.2s) {
                 transform: scale(1.2);
                 color: $color-black;
@@ -29,6 +34,12 @@
         &--character {
             text-align: start;
         }
+    }
+
+    // animamtion for search-box to show
+    @include uTriggeredAnimation(.5s cubic-bezier(.73,.33,.2,1.4)) {
+        opacity: 1;
+        transform: translate(0) scale(1) rotate(0);
     }
 
     &__wrap {
@@ -100,32 +111,9 @@
         }
     }
 
-    // &__date {
-    //     padding: 2rem 1rem;
-    //     height: 3rem;
-    //     width: 5rem;
-    //     letter-spacing: .5rem;
-    //     outline: none;
-    //     font-size: inherit;
-    //     border-radius: 3px;
-    //     border: none;
+    & > .u-trigger {
+        // TODO modify this to invisible
+        visibility: visible;
+    }
 
-    //     &::-webkit-inner-spin-button,
-    //     &::-webkit-outer-spin-button {
-    //         -webkit-appearance: none;
-    //         margin: 0;
-    //     }
-    // }
-
-    // &__name {
-    //     padding: 2rem 1rem;
-    //     height: 3rem;
-    //     width: 43rem;
-    //     letter-spacing: .5rem;
-    //     outline: none;
-    //     font-size: inherit;
-    //     border-radius: 3px;
-    //     border: 1px solid gray;
-    //     margin-left: 3rem;
-    // }
 }

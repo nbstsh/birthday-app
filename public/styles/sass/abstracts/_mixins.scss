@@ -42,10 +42,10 @@
     }
 }
 
-@mixin uTriggeredAnimation($second) {
+@mixin uTriggeredAnimation($options) {
     & .u-trigger {
         & + .u-target {
-            transition: all $second;
+            transition: all $options;
         }
 
         &:checked + .u-target {

@@ -117,22 +117,124 @@
         </select>
     </div> 
 
-    <div>
-        <!-- <button id="previous-month">previous</button>
-        <button id="next-month">next</button> -->
-        <!-- button#previous-month 
-        button#next-month -->
-    </div>
-    
 
     <div id="display" class="display">
+
         <div class="display__header">
             <h2 id="header-month">1月</h2>
             <span id="previous-month" class="button button--previous"><i class="fas fa-angle-double-left"></i></span>
             <span id="next-month" class="button button--next"><i class="fas fa-angle-double-right"></i></span>
+            <ul class="display__header-icons">
+                <li>
+                    <label>
+                        <input type="checkbox" class="icon-checkbox"> 
+                        <span class="icon"><i class="fas fa-mouse-pointer"></i></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" class="icon-checkbox">
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                        <span class="sample"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" class="icon-checkbox">
+                        <span class="icon"><i class="fas fa-plus"></i></span>
+                    </label>
+                </li>
+        </div>
+
+        <div class="search">
+            <input type="checkbox" class="u-trigger" id="search-month-trigger">
+            <div class="search__box search__box--month u-target">
+                <div class="search__wrap">
+
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">1</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">2</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">3</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">4</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">5</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">6</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">7</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">8</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">9</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">10</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">11</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="month" class="u-trigger">
+                        <span class="u-target  search__month-number">12</span>
+                    </label>
+                </div>
+            </div>
+
+
+            <input type="checkbox" class="u-trigger" id="search-character-trigger">
+            <div class="search__box search__box--character u-target">
+                <div class="search__wrap">
+                    <input type="number" min="1" max="31" class="search__input search__input--date">
+                    <input type="text" class="search__input search__input--name">
+                </div>
+            </div>
+
         </div>
     </div>
+
     
     <script src="scripts/bundle.js"></script>
+
+    <script>
+    
+        // test purpose
+
+        const toggleTrigger = (id) => {
+            const trigger = document.querySelector(id);
+            trigger.checked = !trigger.checked;
+        }
+
+        const toggleMonthTrigger = () => {
+            toggleTrigger('#search-month-trigger')
+        }
+
+        const toggleCharacterTrigger = () => {
+            toggleTrigger('#search-character-trigger')
+        }
+
+        
+    </script>
 </body>
 </html>
