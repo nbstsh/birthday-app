@@ -37,7 +37,7 @@
     }
 
     // animamtion for search-box to show
-    @include uTriggeredAnimation(.5s cubic-bezier(.73,.33,.2,1.4)) {
+    @include uTriggeredAnimation(.5s cubic-bezier(.73,.33,.18,1.25)) {
         opacity: 1;
         transform: translate(0) scale(1) rotate(0);
     }
