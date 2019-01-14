@@ -4,6 +4,7 @@ import { initializeIndexPage, setCharacterForm, resetCharacterForm } from './vie
 import { generateDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
 import { getFilters, setFilters } from './filters'
+import { toggleMonthTrigger, toggleCharacterTrigger } from './animation/searchbox'
 
 
 initializeIndexPage()
@@ -88,4 +89,14 @@ document.querySelector('#next-month').addEventListener('click', (e) => {
     const nextMonth = currentMonth === '12' ? '1' : Number(currentMonth) + 1 + ''
     setFilters({ month: nextMonth })
     initializeIndexPage()
+})
+
+//show search-month-box
+document.querySelector('#show-search-month').addEventListener('click', (e) => {
+    toggleMonthTrigger()
+})
+
+//show search-character-box
+document.querySelector('#show-search-character').addEventListener('click', (e) => {
+    toggleCharacterTrigger()
 })

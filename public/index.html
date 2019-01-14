@@ -127,13 +127,13 @@
             <ul class="display__header-icons">
                 <li>
                     <label>
-                        <input type="checkbox" class="icon-checkbox"> 
+                        <input type="checkbox" class="icon-checkbox" id="show-search-month"> 
                         <span class="icon"><i class="fas fa-mouse-pointer"></i></span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="checkbox" class="icon-checkbox">
+                        <input type="checkbox" class="icon-checkbox" id="show-search-character">
                         <span class="icon"><i class="fas fa-search"></i></span>
                         <span class="sample"></span>
                     </label>
@@ -147,9 +147,9 @@
         </div>
 
         <div class="search">
-            <input type="checkbox" class="u-trigger" id="search-month-trigger">
-            <div class="search__box search__box--month u-target">
-                <div class="search__wrap">
+            <div class="search__box search__box--month">
+                <input type="checkbox" class="u-trigger" id="search-month-trigger">
+                <div class="search__wrap u-target">
 
                     <label>
                         <input type="radio" name="month" class="u-trigger">
@@ -203,9 +203,9 @@
             </div>
 
 
-            <input type="checkbox" class="u-trigger" id="search-character-trigger">
-            <div class="search__box search__box--character u-target">
-                <div class="search__wrap">
+            <div class="search__box search__box--character">
+                <input type="checkbox" class="u-trigger" id="search-character-trigger">
+                <div class="search__wrap  u-target">
                     <input type="number" min="1" max="31" class="search__input search__input--date">
                     <input type="text" class="search__input search__input--name">
                 </div>
@@ -217,24 +217,5 @@
     
     <script src="scripts/bundle.js"></script>
 
-    <script>
-    
-        // test purpose
-
-        const toggleTrigger = (id) => {
-            const trigger = document.querySelector(id);
-            trigger.checked = !trigger.checked;
-        }
-
-        const toggleMonthTrigger = () => {
-            toggleTrigger('#search-month-trigger')
-        }
-
-        const toggleCharacterTrigger = () => {
-            toggleTrigger('#search-character-trigger')
-        }
-
-        
-    </script>
 </body>
 </html>

@@ -43,7 +43,7 @@
 }
 
 @mixin uTriggeredAnimation($options) {
-    & .u-trigger {
+    & > .u-trigger {
         & + .u-target {
             transition: all $options;
         }
