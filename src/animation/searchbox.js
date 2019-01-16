@@ -1,9 +1,10 @@
 import { getFilters, setFilters } from '../filters'
 
-const idNames = {
+const selector = {
     month: {
         trigger: '#search-month-trigger',
-        target: ''
+        target: '',
+        number: '.u-trigger[name="month"]'
     },
     monthBox: {
         trigger: '#search-month-box-trigger',
@@ -15,7 +16,8 @@ const idNames = {
     },
     characterBox: {
         trigger: '#search-character-box-trigger',
-        target: '#search-character-box'
+        target: '#search-character-box',
+        inputs: '#search-character-box .search__input'
     }
 }
 
@@ -25,19 +27,19 @@ const toggleTrigger = (id) => {
 }
 
 const toggleMonthTrigger = () => {
-    toggleTrigger(idNames.month.trigger)
+    toggleTrigger(selector.month.trigger)
 }
 
 const toggleCharacterTrigger = () => {
-    toggleTrigger(idNames.character.trigger)
+    toggleTrigger(selector.character.trigger)
 }
 
 const toggleMonthBoxTrigger = () => {
-    toggleTrigger(idNames.monthBox.trigger)
+    toggleTrigger(selector.monthBox.trigger)
 }
 
 const toggleCharacterBoxTrigger = () => {
-    toggleTrigger(idNames.characterBox.trigger)
+    toggleTrigger(selector.characterBox.trigger)
 }
 
 const showBox = (id) => {
@@ -51,19 +53,19 @@ const hideBox = (id) => {
 }
 
 const showMonthBox = () => {
-    showBox(idNames.monthBox.target)
+    showBox(selector.monthBox.target)
 }
 
 const hideMonthBox = () => {
-    hideBox(idNames.monthBox.target)
+    hideBox(selector.monthBox.target)
 }
 
 const showCharacterBox = () => {
-    showBox(idNames.characterBox.target)
+    showBox(selector.characterBox.target)
 }
 
 const hideCharacterBox = () => {
-    hideBox(idNames.characterBox.target)
+    hideBox(selector.characterBox.target)
 }
 
 const moveInMonthBox = () => {
@@ -100,13 +102,13 @@ const moveOutCharacterBox = () => {
 
 const setCurrentMonth = () => {
     const currentMonth = getFilters().month
-    document.querySelectorAll('.u-trigger[name="month"]').forEach((numEl) => {
+    document.querySelectorAll(selector.month.number).forEach((numEl) => {
         if (numEl.value === currentMonth) numEl.click()
     })
 }
 
 const resetCharacterBox = () => {
-    const inputs = document.querySelectorAll('#search-character-box .search__input')
+    const inputs = document.querySelectorAll(selector.characterBox.inputs)
     inputs.forEach((input) => {
         input.value = ''
     })

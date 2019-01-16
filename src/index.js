@@ -35,7 +35,7 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
 
 // set edit form value
 document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('display__character')) {
+    if (e.target.classList.contains('display__name-item')) {
         const characterId = e.target.dataset.characterId
         const characterFormEl = document.querySelector('#character-form')
         characterFormEl.dataset.characterId = characterId
@@ -47,15 +47,7 @@ document.addEventListener('click', (e) => {
     
         setCharacterForm(character.name, month, date, 'edit')
     }
-})
-
-
-document.addEventListener('click', (e) => {
-    if (e.target.id === 'sample') {
-        alert('cliked!')
-    }
-})
-    
+})    
 
 // filter month
 // document.querySelector('#filter-month').addEventListener('input', (e) => {
@@ -123,5 +115,31 @@ document.querySelectorAll('.u-trigger[name="month"]').forEach((numEl) => {
     numEl.addEventListener('click', (e) => {
         setFilters({ month: e.target.value })
         initializeIndexPage()
+    })
+})
+
+// open modal
+document.querySelectorAll('.open-modal').forEach((triggerEl) => {
+    triggerEl.addEventListener('click', (e) => {
+        const targetSelector = triggerEl.dataset.target
+        if (!targetSelector) return 
+
+        const modalEl = document.querySelector(targetSelector)
+        if (!modalEl) return
+
+        modalEl.dataset.status = 'open'
+    })
+})
+
+// close modal
+document.querySelectorAll('.close-modal').forEach((triggerEl) => {
+    triggerEl.addEventListener('click', (e) => {
+        const targetSelector = triggerEl.dataset.target
+        if (!targetSelector) return 
+
+        const modalEl = document.querySelector(targetSelector)
+        if (!modalEl) return
+
+        modalEl.dataset.status = 'close'
     })
 })
