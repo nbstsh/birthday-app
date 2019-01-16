@@ -38,6 +38,11 @@
         right: 0;
     }
 
-
+    &--submit {
+        background-color: $color-white;
+        height: 5rem;
+        width: 20rem;
+        border-radius: 5px;
+    }
 
 }

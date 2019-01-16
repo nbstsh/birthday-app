@@ -23,3 +23,12 @@ a:link,
 a:visited {
     text-decoration: none;
 }
+
+input {
+    outline: none;
+
+    letter-spacing: .5rem;
+    font-size: inherit;
+    border-radius: 5px;
+    border: none;
+}

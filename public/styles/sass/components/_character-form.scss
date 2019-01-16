@@ -1,0 +1,36 @@
+.character-form {
+
+    text-align: center;
+    padding: 3rem 0;
+
+    &__group {
+        margin-bottom: 3rem;
+    }
+
+    &__name {
+        padding: 2rem 2rem;
+        width: 80%;
+        background-color: black;
+        border-radius: 5px;
+        background-color: $color-white;
+        border: 1px solid gray;
+    }
+
+    &__month {
+        border: 1px solid gray;
+        width: 10rem;
+        height: 3rem;
+    }
+
+    &__date {
+        border: 1px solid gray;
+        width: 10rem;
+        height: 3rem;
+    }
+
+    &__button {
+        display: block;
+        margin: 0 auto;
+    }
+
+}
