@@ -6,13 +6,11 @@
     max-width: 70rem;
     text-align: center;
     z-index: 100;
-    // padding: 1rem 0;
-    // background-color: #f1f1f1;
-    // box-shadow: 0 .1rem .5rem rgba($color-black, .3);
 
     &__box {
         position: relative;
         padding: 1rem 5rem;
+        background-image: linear-gradient(to right, rgb(253, 203, 203), rgb(194, 194, 255));
 
         &--month {
 
@@ -32,6 +30,7 @@
 
         &--character {
             text-align: start;
+            z-index: -1;
         }
 
         // serach box style before animation
@@ -40,6 +39,7 @@
             transform-origin: left bottom;
             transform: translate(-50%, -80%) scale(0) rotate(-30deg);
         }
+
         // animtion to show search box
         @include uTriggeredAnimation(.5s cubic-bezier(.73,.33,.18,1.25)) {
             opacity: 1;
@@ -117,8 +117,19 @@
         }
     }
 
-    & > .u-trigger {
-        visibility: hidden;
+    // pre animation setting
+    & > .u-target {
+        opacity: 0;
+        height: 0;
+        transform: translateY(-10rem);
     }
+
+    // animation for search box to show
+    @include uTriggeredAnimation(.3s) {
+        opacity: 1;
+        height: 10rem;
+        transform: translateY(0);
+    }
+
 
 }

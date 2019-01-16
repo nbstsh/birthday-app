@@ -4,7 +4,7 @@ import { initializeIndexPage, setCharacterForm, resetCharacterForm } from './vie
 import { generateDates, getFilteredDates } from './dates'
 import { sortByBirthday } from './sort'
 import { getFilters, setFilters } from './filters'
-import { toggleMonthTrigger, toggleCharacterTrigger } from './animation/searchbox'
+import { moveInMonthBox, moveOutMonthBox, moveInCharacterBox, moveOutCharacterBox, setCurrentMonth } from './animation/searchbox'
 
 
 initializeIndexPage()
@@ -81,6 +81,9 @@ document.querySelector('#previous-month').addEventListener('click', (e) => {
     const previousMonth = currentMonth === '1' ? '12' : Number(currentMonth) - 1 + ''
     setFilters({ month: previousMonth })
     initializeIndexPage()
+
+    // set search month box number
+    setCurrentMonth()
 })
 
 // to next month
@@ -89,14 +92,34 @@ document.querySelector('#next-month').addEventListener('click', (e) => {
     const nextMonth = currentMonth === '12' ? '1' : Number(currentMonth) + 1 + ''
     setFilters({ month: nextMonth })
     initializeIndexPage()
+
+    // set search month box number
+    setCurrentMonth()
 })
 
-//show search-month-box
+//show/hide search-month-box
 document.querySelector('#show-search-month').addEventListener('click', (e) => {
-    toggleMonthTrigger()
+    if (e.target.checked) {
+        moveInMonthBox()
+        setCurrentMonth()
+    } else {
+        moveOutMonthBox()
+    }
+    
 })
 
-//show search-character-box
+//show/hide search-character-box
 document.querySelector('#show-search-character').addEventListener('click', (e) => {
-    toggleCharacterTrigger()
+    if (e.target.checked) {
+        moveInCharacterBox()
+    } else {
+        moveOutCharacterBox()
+    }
+})
+
+document.querySelectorAll('.u-trigger[name="month"]').forEach((numEl) => {
+    numEl.addEventListener('click', (e) => {
+        setFilters({ month: e.target.value })
+        initializeIndexPage()
+    })
 })
