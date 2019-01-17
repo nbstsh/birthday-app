@@ -115,23 +115,6 @@ const resetCharacterBox = () => {
     setFilters({date: '', name: ''})
 }
 
-const addMarginTop = () => {
-    const displayBodyEl = document.querySelector('#displayBody')
-    if (!displayBodyEl) return 
-
-    const searchBox = document.querySelectorAll('.searchbox-trigger:checked')
-    const length = searchBox.length;
-
-    // if (length === 1) {
-    //     displayBodyEl.classList.add('u-margin-top-10')
-    //     displayBodyEl.classList.remove('u-margin-top-20')
-    // } else if (length === 2) {
-    //     displayBodyEl.classList.remove('u-margin-top-10')
-    //     displayBodyEl.classList.add('u-margin-top-20')
-    // } else {
-    //     displayBodyEl.classList.remove('u-margin-top-10')
-    // }
-}
 
 setCurrentMonth()
 hideMonthBox()

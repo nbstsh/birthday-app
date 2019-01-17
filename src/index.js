@@ -6,6 +6,7 @@ import { sortByBirthday } from './sort'
 import { getFilters, setFilters } from './filters'
 import { moveInMonthBox, moveOutMonthBox, moveInCharacterBox, moveOutCharacterBox, setCurrentMonth, resetCharacterBox } from './animation/searchbox'
 
+import './character-form'
 
 initializeIndexPage()
 
@@ -111,7 +112,7 @@ document.querySelector('#show-search-character').addEventListener('click', (e) =
 })
 
 // search-month-box : month number clicked event
-document.querySelectorAll('.u-trigger[name="month"]').forEach((numEl) => {
+document.querySelectorAll('.search__box .u-trigger[name="month"]').forEach((numEl) => {
     numEl.addEventListener('click', (e) => {
         setFilters({ month: e.target.value })
         initializeIndexPage()
