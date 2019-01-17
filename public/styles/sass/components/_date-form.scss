@@ -1,0 +1,94 @@
+.date-form {
+
+    &__month {
+        display: flex;
+        justify-content: space-evenly;
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+
+        // border: 1px solid blue;
+
+    }
+
+    &__month-number {
+        cursor: pointer;
+        position: relative;
+        width: 2rem;
+
+        &::after {
+            content: '';
+            // border: 1px solid blue;
+            background-image: linear-gradient(to right, rgb(255, 111, 111), rgb(112, 112, 255));
+            border-radius: 2rem;
+            position: absolute;
+            left: -20%;
+            top: -10%;
+            width: 3rem;
+            height: 3rem;
+            opacity: 0;
+            transform: scale(.5);
+            transition: all .2s;
+            backface-visibility: hidden;
+            z-index: -1;
+        }
+
+        &.clicked {
+            color: white;
+        }
+
+        &.clicked::after {
+            opacity: 1;
+            transform: scale(1);
+            transition: all .2s;
+        }
+
+    }
+
+    &__date {
+        border: 1px solid rgb(190, 190, 190);
+        width: 80%;
+        margin: 3rem auto;
+        padding: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: baseline;
+        border-radius: 3px;
+    }   
+
+    &__date-number {
+        width: 2rem;
+        margin: .5rem 1.18rem;
+        cursor: pointer;
+        position: relative;
+        
+        &::after {
+            content: '';
+            // border: 1px solid blue;
+            background-image: linear-gradient(to right, rgb(255, 111, 111), rgb(112, 112, 255));
+            border-radius: 2rem;
+            position: absolute;
+            left: -20%;
+            top: -10%;
+            width: 3rem;
+            height: 3rem;
+            opacity: 0;
+            transform: scale(.5);
+            transition: all .2s;
+            backface-visibility: hidden;
+            z-index: -1;
+        }
+
+        &.clicked {
+            color: white;
+        }
+
+        &.clicked::after {
+            opacity: 1;
+            transform: scale(1);
+            transition: all .2s;
+        }
+
+    }
+}

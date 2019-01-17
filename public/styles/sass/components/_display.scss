@@ -38,20 +38,20 @@
     }
 
     &__body {
-        margin-top: 2rem;
+        margin-top: 3rem;
         min-height: 80vh;
         padding: 3rem 5rem;
-        border-radius: 3px;
+        border-radius: 10px;
         box-shadow: 0 .1rem .5rem rgba($color-black, .3);
     }
 
 
     &__date-box {
-        border: 1px solid rgba($color-black, .1);
+        border: 1px solid rgb(179, 179, 179);
         margin-bottom: 2rem;
-        box-shadow: 0 .1rem .5rem rgba($color-black, .3);
         width: 100%;
         display: table;
+        border-radius: 15px;
     }
 
     &__date {
