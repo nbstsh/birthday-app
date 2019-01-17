@@ -19,8 +19,16 @@
     &__select-wrapper {
         position: relative;
         display: inline-block;
-        width: 6rem;
+        width: 10rem;
         height: 3rem;
+
+        &:nth-child(1) {
+            text-align: right;
+        }
+
+        &:nth-child(2) {
+            text-align: left;
+        }
     }
 
     &__selected-number {
@@ -32,7 +40,7 @@
         color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
-        background-image: linear-gradient(to right, rgb(255, 111, 111), rgb(112, 112, 255));
+        background-image: linear-gradient(to right, rgb(112, 112, 255), rgb(255, 111, 111));
         @include absCenter;
         z-index: -1;
     }
@@ -45,6 +53,7 @@
         font-size: 0;
         outline: none;
         border: none;
+        cursor: pointer;
     }
 
     &__button {
