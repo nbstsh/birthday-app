@@ -1,6 +1,22 @@
 // COLOR
 $color-black: black;
-$color-white: white;
+$color-white: hsl(0, 0%, 100%);
+
+$color-gray: gray;
+
+$color-primary-dark: rgb(250, 61, 61);
+$color-primary:rgb(255, 129, 129);
+$color-primary-light:rgb(255, 206, 206);
+
+$color-secondary-dark: rgb(61, 61, 255);
+$color-secondary:rgb(129, 129, 255);
+$color-secondary-light:rgb(206, 206, 255);
+
+
+// gradient
+$gradient-dark: linear-gradient(to right bottom, $color-primary-dark, $color-secondary-dark);
+$gradient: linear-gradient(to right bottom, $color-primary, $color-secondary);
+$gradient-light: linear-gradient(to right bottom, $color-primary-light, $color-secondary-light);
 
 // FONT
 $default-font-size: 1.6rem;
@@ -15,3 +31,6 @@ $gutter-vertical: 8rem;
 $gutter-horizontal: 2rem;
 $min-col-total-number: 2;
 $max-col-total-number: 12;
+
+
+

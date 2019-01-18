@@ -7,8 +7,19 @@
         margin: 0 auto;
         position: relative;
 
-        // border: 1px solid blue;
 
+        &::after {
+            content: 'Month';
+            height: 3rem;
+            width: 100%;
+            position: absolute;
+            top: -3.5rem;
+            text-align: center;
+            letter-spacing: 1rem;
+            color: $color-gray;
+
+            @include labelFont;
+        }
     }
 
     &__month-number {
@@ -18,8 +29,7 @@
 
         &::after {
             content: '';
-            // border: 1px solid blue;
-            background-image: linear-gradient(to right, rgb(255, 111, 111), rgb(112, 112, 255));
+            background-image: $gradient-dark;
             border-radius: 2rem;
             position: absolute;
             left: -20%;
@@ -34,7 +44,7 @@
         }
 
         &.clicked {
-            color: white;
+            color: $color-white;
         }
 
         &.clicked::after {
@@ -46,15 +56,32 @@
     }
 
     &__date {
-        border: 1px solid rgb(190, 190, 190);
+        border: 1px solid $color-gray;
         width: 80%;
-        margin: 3rem auto;
+        margin: 5.5rem auto;
         padding: 2rem;
         display: flex;
         flex-wrap: wrap;
         align-content: center;
         align-items: baseline;
         border-radius: 3px;
+        position: relative;
+
+
+        &::after {
+            content: 'Date';
+            // border: 1px solid blue;
+            height: 3rem;
+            width: 100%;
+            position: absolute;
+            top: -3.5rem;
+            text-align: center;
+            letter-spacing: 1rem;
+            color: $color-gray;
+            transform: translateX(-2rem);
+
+            @include labelFont;
+        }
     }   
 
     &__date-number {
@@ -66,7 +93,7 @@
         &::after {
             content: '';
             // border: 1px solid blue;
-            background-image: linear-gradient(to right, rgb(255, 111, 111), rgb(112, 112, 255));
+            background-image: $gradient-dark;
             border-radius: 2rem;
             position: absolute;
             left: -20%;
@@ -81,7 +108,7 @@
         }
 
         &.clicked {
-            color: white;
+            color: $color-white;
         }
 
         &.clicked::after {

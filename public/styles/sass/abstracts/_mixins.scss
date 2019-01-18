@@ -53,3 +53,8 @@
         }
     }
 }
+
+@mixin labelFont {
+    color: gray;
+    letter-spacing: .4rem;
+}

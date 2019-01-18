@@ -116,14 +116,15 @@
     <div class="modal" data-status="close" id="character-modal">
         <div class="modal__background close-modal" data-target="#character-modal"></div>
         <div class="modal__container modal__container--character">
-            <div class="modal__header">Character</div>
+            <div class="modal__header">Create New Character</div>
             <div class="modal__body">
 
                 <form id="character-form" class="character-form">
-                    <div class="character-form__group">
-                        <input type="text" name="characterName" placeholder="character name" class="character-form__name">
+                    <div class="character-form__group character-form__group--name">
+                        <input type="text" name="characterName" placeholder="character name" class="character-form__name" id="character-form-name" required> 
+                        <label id="character-form-name">character name</label>
                     </div>
-                    <div class="character-form__group">
+                    <div class="character-form__group character-form__group--date">
                         <div class="character-form__select-wrapper">
                             <span class="character-form__selected-number" id="selected-month-text">1月</span>
                             <select name="month" id="character-form-month" class="character-form__month">
@@ -143,7 +144,7 @@
                         </div>
                         <div class="character-form__select-wrapper">
                             <span class="character-form__selected-number" id="selected-date-text">1日</span>
-                            <select name="date" id="character-form-date" class="character-form__date">
+                            <select name="date" id="character-form-date" class="character-form__date" placeholder="Date">
                                 <option value="1">1日</option>
                                 <option value="2">2日</option>
                                 <option value="3">3日</option>
@@ -182,7 +183,7 @@
 
                     <div class="date-form">
                         <div class="date-form__month">
-                            <span class="date-form__month-number" data-value="1">1</span>
+                            <span class="date-form__month-number clicked" data-value="1">1</span>
                             <span class="date-form__month-number" data-value="2">3</span>
                             <span class="date-form__month-number" data-value="3">2</span>
                             <span class="date-form__month-number" data-value="4">4</span>
@@ -196,7 +197,7 @@
                             <span class="date-form__month-number" data-value="12">12</span>
                         </div>
                         <div class="date-form__date">
-                            <span class="date-form__date-number" data-value="1">1</span>
+                            <span class="date-form__date-number clicked" data-value="1">1</span>
                             <span class="date-form__date-number" data-value="2">2</span>
                             <span class="date-form__date-number" data-value="3">3</span>
                             <span class="date-form__date-number" data-value="4">4</span>

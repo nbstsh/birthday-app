@@ -4,16 +4,60 @@
     padding: 3rem 0;
 
     &__group {
-        margin-bottom: 3rem;
+        position: relative;
+
+        &--name {
+            transform: translateY(3rem);
+        }
+
+        &--date {
+            border-bottom: 1px solid gray;
+            padding: 1.5rem;
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 7rem;
+            margin-top: 2rem;
+        }
     }
 
     &__name {
         padding: 2rem 2rem;
         width: 80%;
-        background-color: black;
+        background-color: $color-black;
         border-radius: 5px;
         background-color: $color-white;
-        border: 1px solid gray;
+        border: 1px solid $color-gray;
+        transition: all .2s;
+
+        &:focus {
+            border-bottom:3px solid $color-secondary;
+            box-shadow: 0 1px 1px rgba($color-black, .2);
+
+            &:invalid {
+                border-bottom:3px solid $color-primary;
+            }
+        }
+
+        &:placeholder-shown + label {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5rem);
+        }
+
+
+        & + label {
+            display: block;
+            width: 80%;
+            margin: 1rem auto;
+            padding-left: 2rem;
+            text-align: left;
+            transition: all .2s;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-10rem);
+
+            @include labelFont;
+        }
     }
 
     &__select-wrapper {
@@ -40,7 +84,7 @@
         color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
-        background-image: linear-gradient(to right, rgb(112, 112, 255), rgb(255, 111, 111));
+        background-image: $gradient;
         @include absCenter;
         z-index: -1;
     }
