@@ -17,7 +17,15 @@ import { getFilters } from './filters'
 
 const idNames = {
     display: {
+        container: 'display',
         body: 'displayBody'
+    },
+    characterForm: {
+        form: 'character-form',
+        name: 'character-form-name',
+        month: 'character-form-month',
+        date: 'character-form-date',
+        submit: 'character-form-submit'
     }
 }
 
@@ -103,16 +111,4 @@ const initializeIndexPage = () => {
 }
 
 
-const setCharacterForm = (name, month, date, buttonText = 'create') => {
-    const characterFormEl = document.querySelector('#character-form')
-
-    characterFormEl.children.characterName.value = name
-    characterFormEl.children.month.value = month
-    characterFormEl.children.date.value = date
-
-    characterFormEl.children.submitButton.textContent = buttonText
-}
-
-const resetCharacterForm = () => { setCharacterForm('', 1, 1) }
-
- export { renderDisplay, initializeIndexPage, setCharacterForm, resetCharacterForm }
+ export { renderDisplay, initializeIndexPage }

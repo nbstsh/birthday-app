@@ -11,29 +11,6 @@ import './character-form'
 initializeIndexPage()
 
 
-document.querySelector('#character-form').addEventListener('submit', (e) => {
-    e.preventDefault()
-    const elements = e.target.elements
-    const name = elements.characterName.value
-    const month = elements.month.value
-    const date = elements.date.value
-
-    if (name === '' || month === '' || date === '') return 
-
-    const birthday = `${month}/${date}`
-    const id = e.target.dataset.characterId
-
-    if (id) {
-        updateCharacters({ id, name, birthday })
-    } else {
-        createCharacter({ name, birthday })
-    }
-    
-    setFilters({ month })
-    resetCharacterForm()
-    initializeIndexPage()
-})
-
 // set edit form value
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('display__name-item')) {
