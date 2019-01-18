@@ -42,7 +42,7 @@ const initMonthText = (number) => {
 }
 
 const initDateText = (number) => {
-    initDisplayText(selector.dateText, `${number}月`)
+    initDisplayText(selector.dateText, `${number}日`)
 }
 
 

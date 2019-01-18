@@ -32,9 +32,6 @@
             margin: 0 1rem;
         }
         
-        @include iconCheckedAnimation(.2s) {
-            color: red;
-        }
     }
 
     &__body {
