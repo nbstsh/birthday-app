@@ -28,6 +28,7 @@
         background-color: $color-white;
         border: 1px solid $color-gray;
         transition: all .2s;
+        text-align: center;
 
         &:focus {
             border-bottom:3px solid $color-secondary;
@@ -49,12 +50,11 @@
             display: block;
             width: 80%;
             margin: 1rem auto;
-            padding-left: 2rem;
-            text-align: left;
+            text-align: center;
             transition: all .2s;
             opacity: 1;
             visibility: visible;
-            transform: translateY(-10rem);
+            transform: translateY(-11rem);
 
             @include labelFont;
         }

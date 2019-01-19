@@ -14,6 +14,8 @@ initializeIndexPage()
 // set edit form value
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('display__name-item')) {
+        console.log('work')
+        
         const characterId = e.target.dataset.characterId
         const characterFormEl = document.querySelector('#character-form')
         characterFormEl.dataset.characterId = characterId
