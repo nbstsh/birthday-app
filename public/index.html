@@ -238,23 +238,23 @@
 
 
 
-    <div class="modal" data-status="open" id="detail-modal">
+    <div class="modal" data-status="close" id="detail-modal" data-id="">
         <div class="modal__background close-modal" data-target="#detail-modal" id="character-detail-background"></div>
         <div class="modal__container modal__container--detail">
             <div class="modal__header"></div>
             <div class="modal__body">
                 <ul class="character-detail">
                     <li class="character-detail__button-wrap">
-                        <span class="character-detail__button"><i class="fas fa-edit"></i></span>
+                        <span class="character-detail__button" id="character-edit"><i class="fas fa-edit"></i></span>
                         <span class="character-detail__button"><i class="far fa-sticky-note"></i></span>
                     </li>
                     <li class="character-detail__item">
                         <label class="character-detail__item-name">NAME</label>
-                        <h2 class="character-detail__item-content">sample name</h2>
+                        <h2 class="character-detail__item-content" id="character-detail-name">sample name</h2>
                     </li>
                     <li class="character-detail__item">
                         <label class="character-detail__item-name">BIRTHDAY</label>
-                        <h2 class="character-detail__item-content">11月 11日</h2>
+                        <h2 class="character-detail__item-content" id="character-detail-birthday">11月 11日</h2>
                     </li>
                     <li class="character-detail__item character-detail__item--memos">
                         <ul>

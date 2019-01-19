@@ -7,27 +7,10 @@ import { getFilters, setFilters } from './filters'
 import { moveInMonthBox, moveOutMonthBox, moveInCharacterBox, moveOutCharacterBox, setCurrentMonth, resetCharacterBox } from './animation/searchbox'
 
 import './character-form'
+import './character-detail'
 
 initializeIndexPage()
 
-
-// set edit form value
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('display__name-item')) {
-        console.log('work')
-        
-        const characterId = e.target.dataset.characterId
-        const characterFormEl = document.querySelector('#character-form')
-        characterFormEl.dataset.characterId = characterId
-
-        const character = getCharacters().find((character) => character.id === characterId)
-        const birthday = character.birthday.split('/')
-        const month = birthday[0]
-        const date = birthday[1]
-    
-        setCharacterForm(character.name, month, date, 'edit')
-    }
-})    
 
 // filter month
 // document.querySelector('#filter-month').addEventListener('input', (e) => {

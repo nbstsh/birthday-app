@@ -1,4 +1,4 @@
-import { createCharacter, updateCharacters } from './character'
+import { createCharacter, updateCharacters, getCharacters } from './character'
 import { initializeIndexPage } from './view'
 import { setFilters } from './filters'
 import { setInputValue } from './utilities/form'
@@ -13,7 +13,11 @@ const selector = {
     monthText: '#selected-month-text',
     dateText: '#selected-date-text',
     submitButton: '#character-form-submit',
-    background: '#character-form-background'
+    formBackground: '#character-form-background',
+    editButton: '#character-edit',
+    detailBackground: '#character-detail-background',
+    detailModal: '#detail-modal',
+    formModal: '#character-modal'
 }
 
 
@@ -78,7 +82,23 @@ const resetDateForm = () => {
 }
 
 const closeCharacterForm = () => {
-    document.querySelector(selector.background).click()
+    document.querySelector(selector.formBackground).click()
+}
+
+const openCharacterForm = () => {
+    document.querySelector(selector.formModal).dataset.status = 'open'
+}
+
+const closeCharacterDetail = () => {
+    document.querySelector(selector.detailBackground).click()
+}
+
+const findMonthNumEl = (month) => {
+    return document.querySelector(`${selector.monthNumber}[data-value="${month}"]`)
+}
+
+const findDateNumEl = (month) => {
+    return document.querySelector(`${selector.dateNumber}[data-value="${month}"]`)
 }
 
 // date-form month number clicked event
@@ -99,18 +119,17 @@ document.querySelectorAll(selector.dateNumber).forEach((numEl) => {
 
 // date-form month-input event
 document.querySelector(selector.monthInput).addEventListener('input', (e) => {
-    const numEl = document.querySelector(`${selector.monthNumber}[data-value="${e.target.value}"]`)
+    const numEl = findMonthNumEl(e.tarfet.value)
     renderMonthNumber(numEl)
     initMonthText(e.target.value)
 })
 
 // date-form date-input event
 document.querySelector(selector.dateInput).addEventListener('input', (e) => {
-    const numEl = document.querySelector(`${selector.dateNumber}[data-value="${e.target.value}"]`)
+    const numEl = findDateNumEl(e.targetEl.value)
     renderDateNumber(numEl)
     initDateText(e.target.value)
 })
-
 
 // create character
 document.querySelector('#character-form').addEventListener('submit', (e) => {
@@ -136,4 +155,23 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
     resetDateForm()
     initializeIndexPage()
     closeCharacterForm()
+})
+
+
+// open edit form 
+document.querySelector(selector.editButton).addEventListener('click', (e) => {
+    const id = document.querySelector(selector.detailModal).dataset.id
+    closeCharacterDetail();
+    
+    const character = getCharacters().find((character) => character.id === id)
+    const birthday = character.birthday.split('/')
+    const month = birthday[0]
+    const date = birthday[1]
+    setCharacterForm(character.name, month, date, 'edit')
+    renderMonthNumber(findMonthNumEl(month))
+    initMonthText(month)
+    renderDateNumber(findDateNumEl(date))
+    initDateText(date)
+
+    openCharacterForm()
 })
