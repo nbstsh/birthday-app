@@ -5,6 +5,7 @@ import { setInputValue } from './utilities/form'
 
 
 const selector = {
+    form: '#character-form',
     nameInput: '#character-form-name',
     monthInput: '#character-form-month',
     dateInput: '#character-form-date',
@@ -101,6 +102,10 @@ const findDateNumEl = (month) => {
     return document.querySelector(`${selector.dateNumber}[data-value="${month}"]`)
 }
 
+const initCharacterId = (id) => {
+    document.querySelector(selector.form).dataset.id = id
+}
+
 // date-form month number clicked event
 document.querySelectorAll(selector.monthNumber).forEach((numEl) => {
     numEl.addEventListener('click', (e) => {
@@ -132,7 +137,7 @@ document.querySelector(selector.dateInput).addEventListener('input', (e) => {
 })
 
 // create character
-document.querySelector('#character-form').addEventListener('submit', (e) => {
+document.querySelector(selector.form).addEventListener('submit', (e) => {
     e.preventDefault()
     const elements = e.target.elements
     const name = elements.characterName.value
@@ -142,7 +147,7 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
     if (name === '' || month === '' || date === '') return 
 
     const birthday = `${month}/${date}`
-    const id = e.target.dataset.characterId
+    const id = e.target.dataset.id
 
     if (id) {
         updateCharacters({ id, name, birthday })
@@ -160,18 +165,22 @@ document.querySelector('#character-form').addEventListener('submit', (e) => {
 
 // open edit form 
 document.querySelector(selector.editButton).addEventListener('click', (e) => {
+    // get id and close detail modal
     const id = document.querySelector(selector.detailModal).dataset.id
     closeCharacterDetail();
     
+    // set character from
     const character = getCharacters().find((character) => character.id === id)
     const birthday = character.birthday.split('/')
     const month = birthday[0]
     const date = birthday[1]
-    setCharacterForm(character.name, month, date, 'edit')
+    const buttonText = 'edit'
+    setCharacterForm(character.name, month, date, buttonText)
     renderMonthNumber(findMonthNumEl(month))
     initMonthText(month)
     renderDateNumber(findDateNumEl(date))
     initDateText(date)
+    initCharacterId(id)
 
     openCharacterForm()
 })
