@@ -1,16 +1,34 @@
-import { getCharacters } from "./character";
-import { toJapaneseCalender } from "./utilities/convert";
+import { getCharacters, removeCharacter } from './character';
+import { toJapaneseCalender } from './utilities/convert';
+import { initializeIndexPage } from  './view'
 
 const selector = {
     modal: '#detail-modal',
     name: '#character-detail-name',
     birthday: '#character-detail-birthday',
+    deleteButton: '#character-delete',
+    deleteConfirmationModal: '#delete-confirm-modal',
+    cancelButton: '#delete-confirm-no',
+    confirmButton: '#delete-confirm-yes'
 }
+
 
 const openDetailModal = (id) => {
     const detailModal = document.querySelector(selector.modal)
     detailModal.dataset.status = 'open'
     detailModal.dataset.id = id;
+}
+
+const closeDettailModal = () => {
+    document.querySelector(selector.modal).dataset.status = 'close'
+}
+
+const openDeleteConfirmationModal = () => {
+    document.querySelector(selector.deleteConfirmationModal).dataset.status = 'open'
+}
+
+const closeDeleteConfirmationModal = () => {
+    document.querySelector(selector.deleteConfirmationModal).dataset.status = 'close'
 }
 
 const initCharacter = (id) => {
@@ -19,6 +37,9 @@ const initCharacter = (id) => {
     document.querySelector(selector.birthday).textContent = toJapaneseCalender(character.birthday)
 }
 
+const extractId = () => {
+    return document.querySelector(selector.modal).dataset.id
+}
 
 // open/init character detail modal
 document.addEventListener('click', (e) => {
@@ -29,4 +50,22 @@ document.addEventListener('click', (e) => {
         openDetailModal(id)
         initCharacter(id)
     }
+})
+
+// delete button clicked
+document.querySelector(selector.deleteButton).addEventListener('click', (e) => {
+    openDeleteConfirmationModal()
+})
+
+// close delete confirmation modal
+document.querySelector(selector.cancelButton).addEventListener('click', (e) => {
+    closeDeleteConfirmationModal()
+})
+
+document.querySelector(selector.confirmButton).addEventListener('click', (e) => {
+    const id = extractId()
+    removeCharacter(id)
+    closeDeleteConfirmationModal()
+    closeDettailModal()
+    initializeIndexPage()
 })
