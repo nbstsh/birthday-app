@@ -6,6 +6,7 @@ import { setInputValue } from './utilities/form'
 
 const selector = {
     form: '#character-form',
+    formHeader: '#chracter-form-header',
     nameInput: '#character-form-name',
     monthInput: '#character-form-month',
     dateInput: '#character-form-date',
@@ -18,7 +19,9 @@ const selector = {
     editButton: '#character-edit',
     detailBackground: '#character-detail-background',
     detailModal: '#detail-modal',
-    formModal: '#character-modal'
+    formModal: '#character-modal',
+    formModalOpen: '#character-form-open'
+    
 }
 
 
@@ -59,11 +62,12 @@ const initDateText = (number) => {
 }
 
 // set character form by given data
-const setCharacterForm = (name, month, date, buttonText = 'create') => {
+const setCharacterForm = (name, month, date, buttonText = 'create', headerText = 'Create New Character') => {
     document.querySelector(selector.nameInput).value = name
     document.querySelector(selector.monthInput).value = month
     document.querySelector(selector.dateInput).value = date
     document.querySelector(selector.submitButton).textContent = buttonText
+    document.querySelector(selector.formHeader).textContent = headerText
 }
 
 // reset character form to default data
@@ -80,6 +84,11 @@ const resetDateForm = () => {
     setDateFormText('1', '1')
     renderMonthNumber(document.querySelector(selector.monthNumber))
     renderDateNumber(document.querySelector(selector.dateNumber))
+}
+
+const resetCharacterFormModal = () => {
+    resetCharacterForm()
+    resetDateForm()
 }
 
 const closeCharacterForm = () => {
@@ -156,8 +165,7 @@ document.querySelector(selector.form).addEventListener('submit', (e) => {
     }
     
     setFilters({ month })
-    resetCharacterForm()
-    resetDateForm()
+    resetCharacterFormModal()
     initializeIndexPage()
     closeCharacterForm()
 })
@@ -175,7 +183,8 @@ document.querySelector(selector.editButton).addEventListener('click', (e) => {
     const month = birthday[0]
     const date = birthday[1]
     const buttonText = 'edit'
-    setCharacterForm(character.name, month, date, buttonText)
+    const headerText = 'Edit Character Information'
+    setCharacterForm(character.name, month, date, buttonText, headerText)
     renderMonthNumber(findMonthNumEl(month))
     initMonthText(month)
     renderDateNumber(findDateNumEl(date))
@@ -183,4 +192,9 @@ document.querySelector(selector.editButton).addEventListener('click', (e) => {
     initCharacterId(id)
 
     openCharacterForm()
+})
+
+// reset modal value when modal is opened
+document.querySelector(selector.formModalOpen).addEventListener('click', (e) => {
+    resetCharacterFormModal()
 })
