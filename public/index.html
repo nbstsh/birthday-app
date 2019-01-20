@@ -36,7 +36,7 @@
                 <li>
                     <label>
                         <!-- <input type="checkbox" class="icon-checkbox open-modal" data-target="#character-modal"> -->
-                        <span class="icon open-modal" data-target="#character-modal"><i class="fas fa-plus"></i></span>
+                        <span class="icon open-modal" data-target="#character-modal" id="character-form-open"><i class="fas fa-plus"></i></span>
                     </label>
                 </li>
         </div>
@@ -116,7 +116,7 @@
     <div class="modal" data-status="close" id="character-modal">
         <div class="modal__background close-modal" data-target="#character-modal" id="character-form-background"></div>
         <div class="modal__container modal__container--character">
-            <div class="modal__header">Create New Character</div>
+            <div class="modal__header" id="chracter-form-header">Create New Character</div>
             <div class="modal__body">
 
                 <form id="character-form" class="character-form">
@@ -247,6 +247,7 @@
                     <li class="character-detail__button-wrap">
                         <span class="character-detail__button" id="character-edit"><i class="fas fa-edit"></i></span>
                         <span class="character-detail__button"><i class="far fa-sticky-note"></i></span>
+                        <span class="character-detail__button" id="character-delete"><i class="fas fa-trash-alt"></i></span>
                     </li>
                     <li class="character-detail__item">
                         <label class="character-detail__item-name">NAME</label>
@@ -267,6 +268,22 @@
         </div>
     </div>
 
+
+    <div class="modal" data-status="open" id="delete-confirm-modal">
+            <div class="modal__background modal__background--dark close-modal" data-target="#delete-confirm-modal" id="delete-confirm-background"></div>
+            <div class="modal__container modal__container--confirmation">
+                <div class="modal__header"></div>
+                <div class="modal__body">
+                    <div class="confirmation">
+                        <h2 class="confirmation__description">Are you sure to delete the character?</h2>
+                        <div class="confirmation__button-box">
+                            <button class="confirmation__button confirmation__button--no">cancel</button>
+                            <button class="confirmation__button confirmation__button--yes">delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     
     <script src="scripts/bundle.js"></script>

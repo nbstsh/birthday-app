@@ -30,6 +30,10 @@
         width: 100vw;
         height: 100vh;
         background-color: rgba($color-black, .3);
+
+        &--dark {
+            background-color: rgba($color-black, .8);
+        }
     }
 
     &__container {
@@ -46,6 +50,13 @@
         }
 
         &--detail {
+        }
+
+        &--confirmation {
+            padding: 2rem;
+            min-width: 45rem;
+            width: 50%;
+            box-shadow: 0 3rem 6rem rgba($color-black, .5);
         }
         
     }

@@ -18,6 +18,9 @@ $gradient-dark: linear-gradient(to right bottom, $color-primary-dark, $color-sec
 $gradient: linear-gradient(to right bottom, $color-primary, $color-secondary);
 $gradient-light: linear-gradient(to right bottom, $color-primary-light, $color-secondary-light);
 
+$gradient-red: linear-gradient(to right bottom, $color-primary, $color-primary-dark);
+$gradient-blue: linear-gradient(to right bottom, $color-secondary, $color-secondary-dark);
+
 // FONT
 $default-font-size: 1.6rem;
 
