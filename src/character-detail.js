@@ -1,9 +1,11 @@
 import { getCharacters, removeCharacter } from './character';
 import { toJapaneseCalender } from './utilities/convert';
 import { initializeIndexPage } from  './view'
+import { updateMemo, createMemo , findMemos} from './memos';
 
 const selector = {
     modal: '#detail-modal',
+    background: '#character-detail-background',
     name: '#character-detail-name',
     birthday: '#character-detail-birthday',
     deleteButton: '#character-delete',
@@ -12,7 +14,11 @@ const selector = {
     confirmButton: '#delete-confirm-yes',
     memoFormOpenButton: '#memo-form-open',
     memoFormCloseButton: '#memo-form-close',
-    memoForm: '#memo-form-box'
+    memoForm: '#memo-form-box',
+    createMemoButton: '#memo-create',
+    memoTextarea: '#memo-textarea',
+    memoList: '#memo-list',
+
 }
 
 
@@ -50,7 +56,30 @@ const openMemoForm = () => {
 
 const closeMemoForm = () => {
     document.querySelector(selector.memoForm).dataset.status = 'close'
+    document.querySelector(selector.memoTextarea).value = ''
 }
+
+const renderMemos = () => {
+    const memos = findMemos(extractId())
+    const memoListEl = document.querySelector(selector.memoList)
+    memoListEl.innerHTML = ''
+    memos.forEach((memo) => {
+        memoListEl.append(generateMemoEl(memo))
+    })
+}
+
+const generateMemoEl = ({id, text}) => {
+    const memoEl = document.createElement('li')
+    memoEl.textContent = text
+    memoEl.dataset.id = id
+    return memoEl
+}
+
+
+// close memo-form when character-detail modal is closed
+document.querySelector(selector.background).addEventListener('click', (e) => {
+    closeMemoForm()
+})
 
 // open/init character detail modal
 document.addEventListener('click', (e) => {
@@ -60,6 +89,7 @@ document.addEventListener('click', (e) => {
         const id = e.target.dataset.characterId
         openDetailModal(id)
         initCharacter(id)
+        renderMemos()
     }
 })
 
@@ -73,6 +103,7 @@ document.querySelector(selector.cancelButton).addEventListener('click', (e) => {
     closeDeleteConfirmationModal()
 })
 
+// remove character
 document.querySelector(selector.confirmButton).addEventListener('click', (e) => {
     const id = extractId()
     removeCharacter(id)
@@ -86,6 +117,20 @@ document.querySelector(selector.memoFormOpenButton).addEventListener('click', (e
     openMemoForm()
 })
 
+// close create-memo form
 document.querySelector(selector.memoFormCloseButton).addEventListener('click', (e) => {
     closeMemoForm()
+})
+
+document.querySelector(selector.createMemoButton).addEventListener('click', (e) => {
+    const id = extractId()
+    const textarea =  document.querySelector(selector.memoTextarea)
+    const text = textarea.value
+    if (!text) return
+
+    createMemo(id, text)
+    textarea.value = ''
+    console.log(getCharacters().filter((character) => character.id === id))
+
+    renderMemos()
 })
