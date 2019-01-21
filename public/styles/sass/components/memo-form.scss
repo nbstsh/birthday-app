@@ -1,0 +1,25 @@
+.memo-form {
+    text-align: center;
+
+    &__textarea {
+        width: 100%;
+        resize: none;
+        outline: none;
+        border: 1px solid $color-gray;
+        border-radius: 5px;
+        padding: 1rem;
+        font-size: inherit;
+        font-family: inherit;
+        margin-bottom: 1rem;
+    }
+
+    &__button {
+        border: 1px solid gray;
+        width: 20rem;
+        height: 4rem;
+        border-radius: 3px;
+        
+        @include buttonAnimation;
+    }
+
+}
