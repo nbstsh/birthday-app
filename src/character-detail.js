@@ -9,7 +9,10 @@ const selector = {
     deleteButton: '#character-delete',
     deleteConfirmationModal: '#delete-confirm-modal',
     cancelButton: '#delete-confirm-no',
-    confirmButton: '#delete-confirm-yes'
+    confirmButton: '#delete-confirm-yes',
+    memoFormOpenButton: '#memo-form-open',
+    memoFormCloseButton: '#memo-form-close',
+    memoForm: '#memo-form-box'
 }
 
 
@@ -41,6 +44,14 @@ const extractId = () => {
     return document.querySelector(selector.modal).dataset.id
 }
 
+const openMemoForm = () => {
+    document.querySelector(selector.memoForm).dataset.status = 'open'
+}
+
+const closeMemoForm = () => {
+    document.querySelector(selector.memoForm).dataset.status = 'close'
+}
+
 // open/init character detail modal
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('display__name-item')) {
@@ -68,4 +79,13 @@ document.querySelector(selector.confirmButton).addEventListener('click', (e) => 
     closeDeleteConfirmationModal()
     closeDettailModal()
     initializeIndexPage()
+})
+
+// open create-memo form
+document.querySelector(selector.memoFormOpenButton).addEventListener('click', (e) => {
+    openMemoForm()
+})
+
+document.querySelector(selector.memoFormCloseButton).addEventListener('click', (e) => {
+    closeMemoForm()
 })

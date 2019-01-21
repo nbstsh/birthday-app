@@ -1,5 +1,15 @@
 .memo-form {
     text-align: center;
+    position: relative;
+
+    &__close {
+        position: absolute;
+        top: -3.3rem;
+        right: -1rem;
+        font-size: 2rem;
+        color: $color-gray;
+        cursor: pointer;
+    }
 
     &__textarea {
         width: 100%;

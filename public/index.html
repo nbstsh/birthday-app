@@ -246,7 +246,7 @@
                 <ul class="character-detail">
                     <li class="character-detail__button-wrap">
                         <span class="character-detail__button" id="character-edit"><i class="fas fa-edit"></i></span>
-                        <span class="character-detail__button"><i class="far fa-sticky-note"></i></span>
+                        <span class="character-detail__button" id="memo-form-open"><i class="far fa-sticky-note"></i></span>
                         <span class="character-detail__button" id="character-delete"><i class="fas fa-trash-alt"></i></span>
                     </li>
                     <li class="character-detail__item">
@@ -264,8 +264,9 @@
                             <li>alias impedit consequuntur facilis. Aut at deserunt alias consequatur id atque ducimus accusantium minus earum! Recusandae sint earum porro aliquid nobis</li>
                         </ul> -->
                     </li>
-                    <li class="character-detail__item character-detail__item--memo-form">
+                    <li class="character-detail__item character-detail__item--memo-form" id="memo-form-box" data-status="close">
                         <div class="memo-form">
+                            <span class="memo-form__close" id="memo-form-close"><i class="fas fa-chevron-up"></i></span>
                             <textarea class="memo-form__textarea" name="" id="" cols="30" rows="5" placeholder="write new memo"></textarea>
                             <button class="memo-form__button">CREATE NEW MEMO</button>
                         </div>

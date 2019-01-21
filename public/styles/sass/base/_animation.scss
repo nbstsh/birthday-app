@@ -25,3 +25,25 @@
         visibility: hidden;
     }
 }
+
+
+
+@keyframes closeMemoForm {
+    0% {
+        padding: 4rem 3rem 2rem 3rem;
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+    }
+
+    20% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% { 
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+}
