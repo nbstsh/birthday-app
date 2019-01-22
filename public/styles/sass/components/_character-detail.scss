@@ -39,6 +39,7 @@
 
     &__memo-item {
         cursor: pointer;
+        overflow-wrap: break-word;
     }
 
     &__item-name {
@@ -96,9 +97,17 @@
         padding: 1rem;
         border: 1px solid $color-gray;
         border-radius: 5px;
+        position: relative;
+        z-index: 1;
+    }
 
-        &[readonly] {
-            border: none;
-        }
+    &__memo-edit-bg {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: scale(2.3);
     }
 }

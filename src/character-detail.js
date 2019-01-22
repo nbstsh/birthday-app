@@ -25,7 +25,8 @@ const className = {
     displayNameItem: 'display__name-item',
     memoTextarea: 'character-detail__textarea',
     memoListItem: 'character-detail__memo-item',
-    whiteSpacePre: 'u-white-space-pre'
+    whiteSpacePre: 'u-white-space-pre',
+    memoEditBackground: 'character-detail__memo-edit-bg'
 }
 
 
@@ -97,12 +98,19 @@ const generateMemoEditEl = (memoId, text) => {
     return textareaEl
 }
 
+const generateMemoEditBackgroundEl  =() => {
+    const backgroundEl = document.createElement('span')
+    backgroundEl.classList.add(className.memoEditBackground)
+    return backgroundEl
+}
+
 const renderMemoEditForm = (memoEl) => {
     const id = memoEl.dataset.id
     const text = memoEl.textContent
     const memoListEl = memoEl.parentElement
     memoListEl.innerHTML = ''
     memoListEl.append(generateMemoEditEl(id, text))
+    memoListEl.append(generateMemoEditBackgroundEl())
 }
 
 // add eventListener to memo lsit item (span tag)
@@ -113,20 +121,39 @@ const initMemoItemEvent = (memoEl) => {
 }
 
 // add eventListener to memo edit textarea
-const initMemoTextareaEvent = (memoTextareaEl) => {
+const initMemoEditFormEvent = (memoTextareaEl) => {
    memoTextareaEl.addEventListener('keydown', (e) => {
         // "ctrl + enter" are pressed 
         if (e.ctrlKey && e.code === 'Enter' ) {
-            const characterId = extractCharacterId()
-            const id = e.target.dataset.id
-            const text = e.target.value.trim()
+            // const characterId = extractCharacterId()
+            // const id = e.target.dataset.id
+            // const text = e.target.value.trim()
 
-            console.log(text)
+            // console.log(text)
 
-            text === '' ? removeMemo(characterId, id) : updateMemo(characterId, { id, text });
-            renderMemos()
+            // text === '' ? removeMemo(characterId, id) : updateMemo(characterId, { id, text });
+            // renderMemos()
+            closeMemoEditForm(e.target);
         }
     })
+}
+
+const initMemoEditFormBackgroundEvent = () => {
+    document.querySelector(`.${className.memoEditBackground}`).addEventListener('click', (e) => {
+        console.log('work')
+        console.log(e)
+        console.log(e.target.previousSibling)
+        closeMemoEditForm(e.target.previousSibling)
+    })
+}
+
+const closeMemoEditForm = (textareaEl) => {
+    const characterId = extractCharacterId()
+    const id = textareaEl.dataset.id
+    const text = textareaEl.value.trim()
+
+    text === '' ? removeMemo(characterId, id) : updateMemo(characterId, { id, text });
+    renderMemos()
 }
 
 // close memo-form when character-detail modal is closed
@@ -189,6 +216,7 @@ document.querySelector(selector.createMemoButton).addEventListener('click', (e) 
 })
 
 
+
 const generateObserver = (callback) => new MutationObserver((mutations) => {
     mutations.forEach((mutation) => { callback(mutation) })
 })
@@ -200,8 +228,14 @@ const startObserveMemoListItem = (memoListEl) => {
         if (!node) return 
 
         const isContained = (className) => node.classList.contains(className)
-        if (isContained(className.memoListItem)) initMemoItemEvent(node)
-        if (isContained(className.memoTextarea)) initMemoTextareaEvent(node)
+
+        if (isContained(className.memoListItem)) {
+            initMemoItemEvent(node)
+        }
+        if (isContained(className.memoTextarea)) {
+            initMemoEditFormEvent(node)
+            initMemoEditFormBackgroundEvent()
+        }
     }
 
     generateObserver(process).observe(memoListEl, { childList: true })
@@ -216,8 +250,10 @@ const startObserveMemoList = () => {
         initMemoItemEvent(listEl.firstChild)
         startObserveMemoListItem(listEl)
     }
-
-    generateObserver(process).observe(document.querySelector(selector.memoList), { childList: true })
+    
+    const memoListEl = document.querySelector(selector.memoList)
+    generateObserver(process).observe(memoListEl, { childList: true })
 }
+
 
 startObserveMemoList()
