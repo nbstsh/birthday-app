@@ -5,4 +5,6 @@ const toJapaneseCalender = (date) => {
     return `${dates[0]}月 ${dates[1]}日`
 }
 
-export { toJapaneseCalender }
+const replaceWithBraek = (text) => text.replace(/(?:\r\n|\r|\n)/g, '<br>')
+
+export { toJapaneseCalender, replaceWithBraek }

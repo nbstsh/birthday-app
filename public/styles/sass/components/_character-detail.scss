@@ -37,6 +37,10 @@
         }
     }
 
+    &__memo-item {
+        cursor: pointer;
+    }
+
     &__item-name {
         display: inline-block;
         width: 12rem;
