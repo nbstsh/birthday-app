@@ -54,7 +54,6 @@
         font-weight: bold;
         -webkit-background-clip: text;
         background-clip: text;
-
     }
 
     &__item-content {
@@ -99,6 +98,8 @@
         border-radius: 5px;
         position: relative;
         z-index: 1;
+        animation: fadeInFromBottom .5s;
+        height: 15rem;
     }
 
     &__memo-edit-bg {

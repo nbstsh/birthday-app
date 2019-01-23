@@ -125,14 +125,6 @@ const initMemoEditFormEvent = (memoTextareaEl) => {
    memoTextareaEl.addEventListener('keydown', (e) => {
         // "ctrl + enter" are pressed 
         if (e.ctrlKey && e.code === 'Enter' ) {
-            // const characterId = extractCharacterId()
-            // const id = e.target.dataset.id
-            // const text = e.target.value.trim()
-
-            // console.log(text)
-
-            // text === '' ? removeMemo(characterId, id) : updateMemo(characterId, { id, text });
-            // renderMemos()
             closeMemoEditForm(e.target);
         }
     })
@@ -140,9 +132,6 @@ const initMemoEditFormEvent = (memoTextareaEl) => {
 
 const initMemoEditFormBackgroundEvent = () => {
     document.querySelector(`.${className.memoEditBackground}`).addEventListener('click', (e) => {
-        console.log('work')
-        console.log(e)
-        console.log(e.target.previousSibling)
         closeMemoEditForm(e.target.previousSibling)
     })
 }

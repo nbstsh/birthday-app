@@ -26,8 +26,6 @@
     }
 }
 
-
-
 @keyframes closeMemoForm {
     0% {
         padding: 4rem 3rem 2rem 3rem;
@@ -47,3 +45,29 @@
         padding: 0;
     }
 }
+
+@keyframes fadeInFromBottom{
+    0% {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeInFromTop{
+    0% {
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
