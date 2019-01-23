@@ -1,8 +1,9 @@
 .search {
     
-    max-width: 70rem;
+    max-width: $display-max-width;
     text-align: center;
-    margin-top: 9rem;
+
+    // margin-top: 9rem;
 
     &__box {
         position: relative;

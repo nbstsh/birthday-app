@@ -9,9 +9,37 @@ $color-primary-dark: rgb(250, 61, 61);
 $color-primary:rgb(255, 129, 129);
 $color-primary-light:rgb(255, 206, 206);
 
+//TEST
+$color-primary-dark: rgb(173, 68, 103);
+$color-primary: #DD5E89;
+$color-primary-light: rgb(253, 125, 168);
+
+
 $color-secondary-dark: rgb(61, 61, 255);
 $color-secondary:rgb(129, 129, 255);
 $color-secondary-light:rgb(206, 206, 255);
+
+//TEST
+$color-secondary-dark: rgb(201, 147, 113);
+$color-secondary: #F7BB97;
+$color-secondary-light: rgb(255, 208, 179);
+
+
+//TEST
+$color-grey-light-1: #faf9f9;
+$color-grey-light-2: #f4f2f2;
+$color-grey-light-3: #f0eeee;
+$color-grey-light-4: #ccc;
+
+$color-grey-dark-1: #333;
+$color-grey-dark-2: #777;
+$color-grey-dark-3: #999;
+
+
+//////////////////////////////////////////
+
+
+///////////////////////////////////////
 
 
 // gradient
@@ -27,7 +55,17 @@ $default-font-size: 1.6rem;
 
 
 // BOX SHADOW
-$box-shadow-normal: 0 1px 1px rgba($color-black, .3);
+$shadow: 0 1rem 1rem rgba($color-black, .3);
+$shadow-very-light: 0 2rem 5rem rgba($color-black, .06); 
+$shadow-light-1: 0 1px 1px rgba($color-black, .1);
+$shadow-light-2: 0 1px 1px rgba($color-black, .3);
+
+// BORDER RADIUS
+$radius-large-1: 15px;
+$radius-large-2: 10px;
+$radius: 5px;
+$radius-small-1: 3px;
+$radius-small-2: 1px;
 
 //GRID
 $grid-width: 140rem;
@@ -35,6 +73,9 @@ $gutter-vertical: 8rem;
 $gutter-horizontal: 2rem;
 $min-col-total-number: 2;
 $max-col-total-number: 12;
+
+// WIDTH
+$display-max-width: 80rem;
 
 
 

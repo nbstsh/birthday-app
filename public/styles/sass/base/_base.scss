@@ -13,6 +13,13 @@ html {
 
 body {
     box-sizing: border-box;
+
+    background: $gradient;
+    // background-color: $color-primary;
+    color: $color-grey-dark-1;
+
+
+    min-height: 100vh;
 }
 
 ul {

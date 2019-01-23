@@ -18,7 +18,8 @@ import { getFilters } from './filters'
 const idNames = {
     display: {
         container: 'display',
-        body: 'displayBody'
+        body: 'display-body',
+        footer: 'display-footer'
     },
     characterForm: {
         form: 'character-form',
@@ -96,7 +97,8 @@ const renderDisplay = (month, filteredDates) => {
     if (bodyEl) bodyEl.remove()
     
     bodyEl = generateBodyDOM(filteredDates)
-    displayEl.appendChild(bodyEl)
+    // displayEl.appendChild(bodyEl)
+    displayEl.insertBefore(bodyEl, document.getElementById(idNames.display.footer))
 }
 
 
