@@ -133,14 +133,14 @@ document.querySelectorAll(selector.dateNumber).forEach((numEl) => {
 
 // date-form month-input event
 document.querySelector(selector.monthInput).addEventListener('input', (e) => {
-    const numEl = findMonthNumEl(e.tarfet.value)
+    const numEl = findMonthNumEl(e.target.value)
     renderMonthNumber(numEl)
     initMonthText(e.target.value)
 })
 
 // date-form date-input event
 document.querySelector(selector.dateInput).addEventListener('input', (e) => {
-    const numEl = findDateNumEl(e.targetEl.value)
+    const numEl = findDateNumEl(e.target.value)
     renderDateNumber(numEl)
     initDateText(e.target.value)
 })
