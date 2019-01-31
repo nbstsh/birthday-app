@@ -1,0 +1,108 @@
+.character-form {
+
+    text-align: center;
+    padding: 3rem 0;
+
+    &__group {
+        position: relative;
+
+        &--name {
+            transform: translateY(3rem);
+        }
+
+        &--date {
+            border-bottom: 1px solid gray;
+            padding: 1.5rem;
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 7rem;
+            margin-top: 2rem;
+        }
+    }
+
+    &__name {
+        padding: 2rem 2rem;
+        width: 80%;
+        background-color: $color-black;
+        border-radius: 5px;
+        background-color: $color-white;
+        border: 1px solid $color-gray;
+        transition: all .2s;
+        text-align: center;
+
+        &:focus {
+            border-bottom:3px solid $color-secondary;
+            box-shadow: 0 1px 1px rgba($color-black, .2);
+
+            &:invalid {
+                border-bottom:3px solid $color-primary;
+            }
+        }
+
+        &:placeholder-shown + label {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5rem);
+        }
+
+
+        & + label {
+            display: block;
+            width: 80%;
+            margin: 1rem auto;
+            text-align: center;
+            transition: all .2s;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-11rem);
+
+            @include labelFont;
+        }
+    }
+
+    &__select-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 10rem;
+        height: 3rem;
+
+        &:nth-child(1) {
+            text-align: right;
+        }
+
+        &:nth-child(2) {
+            text-align: left;
+        }
+    }
+
+    &__selected-number {
+        display: inline-block;
+        width: 100%;
+        letter-spacing: 1rem;
+        font-weight: bolder;
+        font-size: 2rem;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: $gradient;
+        @include absCenter;
+        z-index: -1;
+    }
+
+    &__month,
+    &__date {
+        width: 6rem;
+        height: 3rem;
+        background-color: transparent;
+        font-size: 0;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    &__button {
+        display: block;
+        margin: 0 auto;
+    }
+
+}

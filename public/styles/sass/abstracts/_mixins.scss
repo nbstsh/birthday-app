@@ -43,7 +43,7 @@
 }
 
 @mixin uTriggeredAnimation($options) {
-    & .u-trigger {
+    & > .u-trigger {
         & + .u-target {
             transition: all $options;
         }
@@ -51,5 +51,22 @@
         &:checked + .u-target {
             @content;
         }
+    }
+}
+
+@mixin labelFont {
+    color: gray;
+    letter-spacing: .4rem;
+}
+
+@mixin buttonAnimation {
+    &:hover {
+        transform: translateY(-.2rem) ;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+    }
+
+    &:active {
+        transform: translateY(0) ;
+        box-shadow: none;
     }
 }

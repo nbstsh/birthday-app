@@ -4,21 +4,23 @@ let dates = []
 const getDates = () => dates
 
 
-const initDates = (sortedCharacters) => {
+const initDates = (sortedCharacters, isSingle) => {
     dates = []
+    let dateObj = null
 
     sortedCharacters.forEach((character) => {
         const birthday = character.birthday.split('/')
-        const dateObj = dates.find((date) => date.month === birthday[0] && date.date === birthday[1])
+        const needsToPushSameCharacter = dateObj && !isSingle
 
-        if (dateObj) {
+        if (needsToPushSameCharacter) {
             dateObj.characters.push(character)
         } else {
-            dates.push({
+            dateObj = {
                 month: birthday[0],
                 date: birthday[1],
                 characters: [character]
-            })
+            }
+            dates.push(dateObj)
         }
     })
 }

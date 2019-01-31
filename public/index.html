@@ -13,111 +13,6 @@
 </head>
 <body>
 
-    <form id="character-form">
-        <input type="text" name="characterName" placeholder="character name">
-        <select name="month" id="month">
-            <option value="1">1月</option>
-            <option value="2">2月</option>
-            <option value="3">3月</option>
-            <option value="4">4月</option>
-            <option value="5">5月</option>
-            <option value="6">6月</option>
-            <option value="7">7月</option>
-            <option value="8">8月</option>
-            <option value="9">9月</option>
-            <option value="10">10月</option>
-            <option value="11">11月</option>
-            <option value="12">12月</option>
-        </select>
-        <select name="date" id="date">
-            <option value="1">1日</option>
-            <option value="2">2日</option>
-            <option value="3">3日</option>
-            <option value="4">4日</option>
-            <option value="5">5日</option>
-            <option value="6">6日</option>
-            <option value="7">7日</option>
-            <option value="8">8日</option>
-            <option value="9">9日</option>
-            <option value="10">10日</option>
-            <option value="11">11日</option>
-            <option value="12">12日</option>
-            <option value="13">13日</option>
-            <option value="14">14日</option>
-            <option value="15">15日</option>
-            <option value="16">16日</option>
-            <option value="17">17日</option>
-            <option value="18">18日</option>
-            <option value="19">19日</option>
-            <option value="20">20日</option>
-            <option value="21">21日</option>
-            <option value="22">22日</option>
-            <option value="23">23日</option>
-            <option value="24">24日</option>
-            <option value="25">25日</option>
-            <option value="26">26日</option>
-            <option value="27">27日</option>
-            <option value="28">28日</option>
-            <option value="29">29日</option>
-            <option value="30">30日</option>
-            <option value="31">31日</option>
-        </select>
-        <button type="submit" name="submitButton">create</button>
-    </form>
-
-    <div id="filters" class="filters">
-        <input type="text" id="filter-name">
-        <select name="month" id="filter-month">
-            <option value="1">1月</option>
-            <option value="2">2月</option>
-            <option value="3">3月</option>
-            <option value="4">4月</option>
-            <option value="5">5月</option>
-            <option value="6">6月</option>
-            <option value="7">7月</option>
-            <option value="8">8月</option>
-            <option value="9">9月</option>
-            <option value="10">10月</option>
-            <option value="11">11月</option>
-            <option value="12">12月</option>
-        </select>
-        <select name="date" id="filter-date">
-            <option value="">なし</option>
-            <option value="1">1日</option>
-            <option value="2">2日</option>
-            <option value="3">3日</option>
-            <option value="4">4日</option>
-            <option value="5">5日</option>
-            <option value="6">6日</option>
-            <option value="7">7日</option>
-            <option value="8">8日</option>
-            <option value="9">9日</option>
-            <option value="10">10日</option>
-            <option value="11">11日</option>
-            <option value="12">12日</option>
-            <option value="13">13日</option>
-            <option value="14">14日</option>
-            <option value="15">15日</option>
-            <option value="16">16日</option>
-            <option value="17">17日</option>
-            <option value="18">18日</option>
-            <option value="19">19日</option>
-            <option value="20">20日</option>
-            <option value="21">21日</option>
-            <option value="22">22日</option>
-            <option value="23">23日</option>
-            <option value="24">24日</option>
-            <option value="25">25日</option>
-            <option value="26">26日</option>
-            <option value="27">27日</option>
-            <option value="28">28日</option>
-            <option value="29">29日</option>
-            <option value="30">30日</option>
-            <option value="31">31日</option>
-        </select>
-    </div> 
-
-
     <div id="display" class="display">
 
         <div class="display__header">
@@ -127,90 +22,276 @@
             <ul class="display__header-icons">
                 <li>
                     <label>
-                        <input type="checkbox" class="icon-checkbox"> 
+                        <input type="checkbox" class="icon-checkbox searchbox-trigger" id="show-search-month"> 
                         <span class="icon"><i class="fas fa-mouse-pointer"></i></span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input type="checkbox" class="icon-checkbox">
+                        <input type="checkbox" class="icon-checkbox searchbox-trigger" id="show-search-character">
                         <span class="icon"><i class="fas fa-search"></i></span>
                         <span class="sample"></span>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="checkbox" class="icon-checkbox">
-                        <span class="icon"><i class="fas fa-plus"></i></span>
                     </label>
                 </li>
         </div>
 
         <div class="search">
-            <input type="checkbox" class="u-trigger" id="search-month-trigger">
-            <div class="search__box search__box--month u-target">
-                <div class="search__wrap">
+
+            <input type="checkbox" class="u-trigger" id="search-month-box-trigger">
+            <div class="search__box search__box--month u-target" id="search-month-box">
+                <input type="checkbox" class="u-trigger" id="search-month-trigger">
+                <div class="search__wrap u-target">
 
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">1</span>
+                        <input type="radio" name="month" class="u-trigger" value="1">
+                        <span class="u-target search__month-number">1</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">2</span>
+                        <input type="radio" name="month" class="u-trigger" value="2">
+                        <span class="u-target search__month-number">2</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">3</span>
+                        <input type="radio" name="month" class="u-trigger" value="3">
+                        <span class="u-target search__month-number">3</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">4</span>
+                        <input type="radio" name="month" class="u-trigger" value="4">
+                        <span class="u-target search__month-number">4</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">5</span>
+                        <input type="radio" name="month" class="u-trigger" value="5">
+                        <span class="u-target search__month-number">5</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">6</span>
+                        <input type="radio" name="month" class="u-trigger" value="6">
+                        <span class="u-target search__month-number">6</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">7</span>
+                        <input type="radio" name="month" class="u-trigger" value="7">
+                        <span class="u-target search__month-number">7</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">8</span>
+                        <input type="radio" name="month" class="u-trigger" value="8">
+                        <span class="u-target search__month-number">8</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">9</span>
+                        <input type="radio" name="month" class="u-trigger" value="9">
+                        <span class="u-target search__month-number">9</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">10</span>
+                        <input type="radio" name="month" class="u-trigger" value="10">
+                        <span class="u-target search__month-number">10</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">11</span>
+                        <input type="radio" name="month" class="u-trigger" value="11">
+                        <span class="u-target search__month-number">11</span>
                     </label>
                     <label>
-                        <input type="radio" name="month" class="u-trigger">
-                        <span class="u-target  search__month-number">12</span>
+                        <input type="radio" name="month" class="u-trigger" value="12">
+                        <span class="u-target search__month-number">12</span>
                     </label>
                 </div>
             </div>
 
-
-            <input type="checkbox" class="u-trigger" id="search-character-trigger">
-            <div class="search__box search__box--character u-target">
-                <div class="search__wrap">
-                    <input type="number" min="1" max="31" class="search__input search__input--date">
-                    <input type="text" class="search__input search__input--name">
+            <input type="checkbox" class="u-trigger" id="search-character-box-trigger">
+            <div class="search__box search__box--character u-target" id="search-character-box">
+                <input type="checkbox" class="u-trigger" id="search-character-trigger">
+                <div class="search__wrap  u-target">
+                    <input type="number" min="1" max="31" class="search__input search__input--date" id="filter-date">
+                    <input type="text" class="search__input search__input--name" id="filter-name" placeholder="name">
                 </div>
             </div>
 
+        </div>
+
+        <div class="display__footer" id="display-footer">
+            <button class="button button--open-modal open-modal" data-target="#character-modal" id="character-form-open">register new birthday</button>
+        </div>
+
+    </div>
+
+
+    <div class="modal" data-status="close" id="character-modal">
+        <div class="modal__background close-modal" data-target="#character-modal" id="character-form-background"></div>
+        <div class="modal__container modal__container--character">
+            <div class="modal__header" id="chracter-form-header">Create New Character</div>
+            <div class="modal__body">
+
+                <form id="character-form" class="character-form">
+                    <div class="character-form__group character-form__group--name">
+                        <input type="text" name="characterName" placeholder="character name" class="character-form__name" id="character-form-name" required> 
+                        <label id="character-form-name">character name</label>
+                    </div>
+                    <div class="character-form__group character-form__group--date">
+                        <div class="character-form__select-wrapper">
+                            <span class="character-form__selected-number" id="selected-month-text">1月</span>
+                            <select name="month" id="character-form-month" class="character-form__month">
+                                <option value="1">1月</option>
+                                <option value="2">2月</option>
+                                <option value="3">3月</option>
+                                <option value="4">4月</option>
+                                <option value="5">5月</option>
+                                <option value="6">6月</option>
+                                <option value="7">7月</option>
+                                <option value="8">8月</option>
+                                <option value="9">9月</option>
+                                <option value="10">10月</option>
+                                <option value="11">11月</option>
+                                <option value="12">12月</option>
+                            </select>
+                        </div>
+                        <div class="character-form__select-wrapper">
+                            <span class="character-form__selected-number" id="selected-date-text">1日</span>
+                            <select name="date" id="character-form-date" class="character-form__date" placeholder="Date">
+                                <option value="1">1日</option>
+                                <option value="2">2日</option>
+                                <option value="3">3日</option>
+                                <option value="4">4日</option>
+                                <option value="5">5日</option>
+                                <option value="6">6日</option>
+                                <option value="7">7日</option>
+                                <option value="8">8日</option>
+                                <option value="9">9日</option>
+                                <option value="10">10日</option>
+                                <option value="11">11日</option>
+                                <option value="12">12日</option>
+                                <option value="13">13日</option>
+                                <option value="14">14日</option>
+                                <option value="15">15日</option>
+                                <option value="16">16日</option>
+                                <option value="17">17日</option>
+                                <option value="18">18日</option>
+                                <option value="19">19日</option>
+                                <option value="20">20日</option>
+                                <option value="21">21日</option>
+                                <option value="22">22日</option>
+                                <option value="23">23日</option>
+                                <option value="24">24日</option>
+                                <option value="25">25日</option>
+                                <option value="26">26日</option>
+                                <option value="27">27日</option>
+                                <option value="28">28日</option>
+                                <option value="29">29日</option>
+                                <option value="30">30日</option>
+                                <option value="31">31日</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                    <div class="date-form">
+                        <div class="date-form__month">
+                            <span class="date-form__month-number clicked" data-value="1">1</span>
+                            <span class="date-form__month-number" data-value="2">3</span>
+                            <span class="date-form__month-number" data-value="3">2</span>
+                            <span class="date-form__month-number" data-value="4">4</span>
+                            <span class="date-form__month-number" data-value="5">5</span>
+                            <span class="date-form__month-number" data-value="6">6</span>
+                            <span class="date-form__month-number" data-value="7">7</span>
+                            <span class="date-form__month-number" data-value="8">8</span>
+                            <span class="date-form__month-number" data-value="9">9</span>
+                            <span class="date-form__month-number" data-value="10">10</span>
+                            <span class="date-form__month-number" data-value="11">11</span>
+                            <span class="date-form__month-number" data-value="12">12</span>
+                        </div>
+                        <div class="date-form__date">
+                            <span class="date-form__date-number clicked" data-value="1">1</span>
+                            <span class="date-form__date-number" data-value="2">2</span>
+                            <span class="date-form__date-number" data-value="3">3</span>
+                            <span class="date-form__date-number" data-value="4">4</span>
+                            <span class="date-form__date-number" data-value="5">5</span>
+                            <span class="date-form__date-number" data-value="6">6</span>
+                            <span class="date-form__date-number" data-value="7">7</span>
+                            <span class="date-form__date-number" data-value="8">8</span>
+                            <span class="date-form__date-number" data-value="9">9</span>
+                            <span class="date-form__date-number" data-value="10">10</span>
+                            <span class="date-form__date-number" data-value="11">11</span>
+                            <span class="date-form__date-number" data-value="12">12</span>
+                            <span class="date-form__date-number" data-value="13">13</span>
+                            <span class="date-form__date-number" data-value="14">14</span>
+                            <span class="date-form__date-number" data-value="15">15</span>
+                            <span class="date-form__date-number" data-value="16">16</span>
+                            <span class="date-form__date-number" data-value="17">17</span>
+                            <span class="date-form__date-number" data-value="18">18</span>
+                            <span class="date-form__date-number" data-value="19">19</span>
+                            <span class="date-form__date-number" data-value="20">20</span>
+                            <span class="date-form__date-number" data-value="21">21</span>
+                            <span class="date-form__date-number" data-value="22">22</span>
+                            <span class="date-form__date-number" data-value="23">23</span>
+                            <span class="date-form__date-number" data-value="24">24</span>
+                            <span class="date-form__date-number" data-value="25">25</span>
+                            <span class="date-form__date-number" data-value="26">26</span>
+                            <span class="date-form__date-number" data-value="27">27</span>
+                            <span class="date-form__date-number" data-value="28">28</span>
+                            <span class="date-form__date-number" data-value="29">29</span>
+                            <span class="date-form__date-number" data-value="30">30</span>
+                            <span class="date-form__date-number" data-value="31">31</span>
+                        </div>
+                    </div>
+                    <button type="submit" name="submitButton" class="character-form__button button--submit" id="character-form-submit">create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal" data-status="close" id="detail-modal" data-id="">
+        <div class="modal__background close-modal" data-target="#detail-modal" id="character-detail-background"></div>
+        <div class="modal__container modal__container--detail">
+            <div class="modal__header"></div>
+            <div class="modal__body">
+                <ul class="character-detail">
+                    <li class="character-detail__button-wrap">
+                        <span class="character-detail__button" id="character-edit"><i class="fas fa-edit"></i></span>
+                        <span class="character-detail__button" id="memo-form-open"><i class="far fa-sticky-note"></i></span>
+                        <span class="character-detail__button" id="character-delete"><i class="fas fa-trash-alt"></i></span>
+                    </li>
+                    <li class="character-detail__item">
+                        <label class="character-detail__item-name">NAME</label>
+                        <h2 class="character-detail__item-content" id="character-detail-name">sample name</h2>
+                    </li>
+                    <li class="character-detail__item">
+                        <label class="character-detail__item-name">BIRTHDAY</label>
+                        <h2 class="character-detail__item-content" id="character-detail-birthday">11月 11日</h2>
+                    </li>
+                    <li class="character-detail__item character-detail__item--memos">
+                        <ul id="memo-list">
+                            <li>
+                                <textarea class="character-detail__textarea" rows="4"  id="memo-edit" data-id="sampleID">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt</textarea>
+                                <button class="character-detail__save-memo">save</button>
+                            </li>
+                            <!-- <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt </li>
+                            <li><textarea class="character-detail__textarea" rows="4" name="" id="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt</textarea></li>
+                            <li>alias impedit consequuntur facilis. Aut at deserunt alias consequatur id atque ducimus accusantium minus earum! Recusandae sint earum porro aliquid nobis</li> -->
+                        </ul>
+                    </li>
+                    <li class="character-detail__item character-detail__item--memo-form" id="memo-form-box" data-status="close">
+                        <div class="memo-form">
+                            <span class="memo-form__close" id="memo-form-close"><i class="fas fa-chevron-up"></i></span>
+                            <textarea class="memo-form__textarea" name="" cols="30" rows="5" placeholder="write new memo" id="memo-textarea"></textarea>
+                            <button class="memo-form__button" id="memo-create">CREATE NEW MEMO</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" data-status="close" id="delete-confirm-modal">
+        <div class="modal__background modal__background--dark close-modal" data-target="#delete-confirm-modal" id="delete-confirm-background"></div>
+        <div class="modal__container modal__container--confirmation">
+            <div class="modal__header"></div>
+            <div class="modal__body">
+                <div class="confirmation">
+                    <h2 class="confirmation__description">Are you sure to delete the character?</h2>
+                    <div class="confirmation__button-box">
+                        <button class="confirmation__button confirmation__button--no" id="delete-confirm-no">cancel</button>
+                        <button class="confirmation__button confirmation__button--yes" id="delete-confirm-yes">delete</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -218,23 +299,7 @@
     <script src="scripts/bundle.js"></script>
 
     <script>
-    
-        // test purpose
 
-        const toggleTrigger = (id) => {
-            const trigger = document.querySelector(id);
-            trigger.checked = !trigger.checked;
-        }
-
-        const toggleMonthTrigger = () => {
-            toggleTrigger('#search-month-trigger')
-        }
-
-        const toggleCharacterTrigger = () => {
-            toggleTrigger('#search-character-trigger')
-        }
-
-        
     </script>
 </body>
 </html>

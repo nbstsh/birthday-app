@@ -1,0 +1,43 @@
+.confirmation {
+
+    text-align: center;
+
+    &__description {
+        margin-top: 2rem;
+        font-size: 2rem;
+        color: $color-gray;
+    }
+
+    &__button-box {
+        padding: 2rem;
+    }
+
+    &__button {
+
+        width: 13rem;
+        height: 5rem;
+        font-size: 1.6rem;
+        border: 1px solid $color-gray;
+        border-radius: 5px;
+        outline: none;
+        text-transform: uppercase;
+        transition: all .3s;
+        
+        &:not(:last-child) {
+            margin-right: 3rem;
+        }
+
+        &--yes {
+            background: $gradient-red;
+            color: $color-white;
+        }
+
+        &--no {
+            background: $gradient-blue;
+            color: $color-white;
+        }
+
+        @include buttonAnimation;
+        
+    }
+}

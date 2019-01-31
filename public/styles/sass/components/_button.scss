@@ -38,6 +38,43 @@
         right: 0;
     }
 
+    &--submit {
+        background-color: $color-white;
+        height: 5rem;
+        width: 20rem;
+        border-radius: 5px;
+    }
 
+    &--open-modal {
+        width: 20rem;
+        height: 5rem;
+        border-radius: 100px;
+        margin: 0 auto;
+        border: none;
+        background: $gradient-light;
+        position: relative;
+
+        @include buttonAnimation;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: $gradient-light;
+            width: 20rem;
+            height: 5rem;
+            border-radius: 100px;
+            z-index: -1;
+            opacity: 1;
+            transform: scale(1);
+            transition: all .3s;
+        }
+
+        &:hover::after {
+            opacity: 0;
+            transform: scale(1.5);
+        }
+    }
 
 }

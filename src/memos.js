@@ -38,4 +38,8 @@ const removeMemo = (characterId, memoId) => {
     }
 }
 
-export { createMemo, updateMemo, removeMemo }
+const findMemos = (characterId) => {
+    return getCharacters().find((character) => character.id === characterId).memos
+}
+
+export { createMemo, updateMemo, removeMemo, findMemos }

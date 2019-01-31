@@ -1,0 +1,121 @@
+.date-form {
+
+    &__month {
+        display: flex;
+        justify-content: space-evenly;
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+
+
+        &::after {
+            content: 'Month';
+            height: 3rem;
+            width: 100%;
+            position: absolute;
+            top: -3.5rem;
+            text-align: center;
+            letter-spacing: 1rem;
+            color: $color-gray;
+
+            @include labelFont;
+        }
+    }
+
+    &__month-number {
+        cursor: pointer;
+        position: relative;
+        width: 2rem;
+
+        &::after {
+            content: '';
+            background-image: $gradient-dark;
+            border-radius: 2rem;
+            position: absolute;
+            left: -20%;
+            top: -10%;
+            width: 3rem;
+            height: 3rem;
+            opacity: 0;
+            transform: scale(.5);
+            transition: all .2s;
+            backface-visibility: hidden;
+            z-index: -1;
+        }
+
+        &.clicked {
+            color: $color-white;
+        }
+
+        &.clicked::after {
+            opacity: 1;
+            transform: scale(1);
+            transition: all .2s;
+        }
+
+    }
+
+    &__date {
+        border: 1px solid $color-gray;
+        width: 80%;
+        margin: 5.5rem auto;
+        padding: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: baseline;
+        border-radius: 3px;
+        position: relative;
+
+
+        &::after {
+            content: 'Date';
+            // border: 1px solid blue;
+            height: 3rem;
+            width: 100%;
+            position: absolute;
+            top: -3.5rem;
+            text-align: center;
+            letter-spacing: 1rem;
+            color: $color-gray;
+            transform: translateX(-2rem);
+
+            @include labelFont;
+        }
+    }   
+
+    &__date-number {
+        width: 2rem;
+        margin: .5rem 1.18rem;
+        cursor: pointer;
+        position: relative;
+        
+        &::after {
+            content: '';
+            // border: 1px solid blue;
+            background-image: $gradient-dark;
+            border-radius: 2rem;
+            position: absolute;
+            left: -20%;
+            top: -10%;
+            width: 3rem;
+            height: 3rem;
+            opacity: 0;
+            transform: scale(.5);
+            transition: all .2s;
+            backface-visibility: hidden;
+            z-index: -1;
+        }
+
+        &.clicked {
+            color: $color-white;
+        }
+
+        &.clicked::after {
+            opacity: 1;
+            transform: scale(1);
+            transition: all .2s;
+        }
+
+    }
+}

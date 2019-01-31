@@ -17,7 +17,16 @@ import { getFilters } from './filters'
 
 const idNames = {
     display: {
-        body: 'displayBody'
+        container: 'display',
+        body: 'display-body',
+        footer: 'display-footer'
+    },
+    characterForm: {
+        form: 'character-form',
+        name: 'character-form-name',
+        month: 'character-form-month',
+        date: 'character-form-date',
+        submit: 'character-form-submit'
     }
 }
 
@@ -88,7 +97,8 @@ const renderDisplay = (month, filteredDates) => {
     if (bodyEl) bodyEl.remove()
     
     bodyEl = generateBodyDOM(filteredDates)
-    displayEl.appendChild(bodyEl)
+    // displayEl.appendChild(bodyEl)
+    displayEl.insertBefore(bodyEl, document.getElementById(idNames.display.footer))
 }
 
 
@@ -96,23 +106,11 @@ const initializeIndexPage = () => {
     const filters = getFilters()
 
     const filteredCharacters = getFilteredCharacters(filters)
-    initDates(sortByBirthday(filteredCharacters))
+    initDates(sortByBirthday(filteredCharacters), true)
     const filteredDates = getFilteredDates(filters)
-
+    
     renderDisplay(filters.month, filteredDates)
 }
 
 
-const setCharacterForm = (name, month, date, buttonText = 'create') => {
-    const characterFormEl = document.querySelector('#character-form')
-
-    characterFormEl.children.characterName.value = name
-    characterFormEl.children.month.value = month
-    characterFormEl.children.date.value = date
-
-    characterFormEl.children.submitButton.textContent = buttonText
-}
-
-const resetCharacterForm = () => { setCharacterForm('', 1, 1) }
-
- export { renderDisplay, initializeIndexPage, setCharacterForm, resetCharacterForm }
+ export { renderDisplay, initializeIndexPage }
