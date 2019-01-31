@@ -5,8 +5,12 @@
 
 @import "base/base";
 @import "base/typography";
+@import "base/utilities";
 
+@import "components/button";
 @import "components/display";
+@import "components/icon";
+@import "components/search";
 
 @import "layout/grid";
 

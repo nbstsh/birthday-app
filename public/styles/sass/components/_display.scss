@@ -1,57 +1,89 @@
 .display {
 
-    width: 80vw;
-    margin: 5rem auto;
-    padding: 2rem;
-    box-shadow: 0 0 1px 1px rgba($color-black, .15);
-    border-radius: 2px;
-    position: relative;
+    width: 80%;
+    max-width: 70rem;
+    margin: 0 auto;
+
 
     &__header {
-        // border: solid 1px gray;
         text-align: center;
-        display: block;
-        padding-top: 1rem;
-        padding-bottom: 2rem;
+        padding: 1rem 0;
+        border-radius: 3px 3px 0 0;
+        box-shadow: 0 .1rem .5rem rgba($color-black, .3);
+        position: fixed;
+        width: 80%;
+        top: 0;
+        max-width: 70rem;
+        z-index: 100;
+        background-color: $color-white;
+
+        & h2 {
+            float: left;
+            padding: 1rem 0 1rem 10rem;
+        }
+    }
+
+    &__header-icons {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 5rem;
+
+        & li {
+            margin: 0 1rem;
+        }
+        
+        @include iconCheckedAnimation(.2s) {
+            color: red;
+        }
     }
 
     &__body {
-        // background-color:rgb(252, 252, 252);
-        // border: solid 1px gray;
-        border-radius: 2px;
-        padding: 1rem;
-        display: inline-block;
-        position: relative;
+        margin-top: 2rem;
+        min-height: 80vh;
+        padding: 3rem 5rem;
+        border-radius: 3px;
+        box-shadow: 0 .1rem .5rem rgba($color-black, .3);
     }
 
 
     &__date-box {
-        box-shadow: 0 0 1px 1px rgba($color-black, .15);
-        display: inline-block;
-        padding: 1rem;
-        min-width: 18rem;
-        width: 10%;
-        height: 10rem;
-        margin: 1.5rem;
+        border: 1px solid rgba($color-black, .1);
+        margin-bottom: 2rem;
+        box-shadow: 0 .1rem .5rem rgba($color-black, .3);
+        width: 100%;
+        display: table;
     }
 
     &__date {
-        margin-bottom: 1rem;
+        // border: 1px solid red;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 20%;
+        position:relative;
+
     }
 
-    &__character {
+    &__name-list {
+        // border: 1px solid blue;
 
+        display: table-cell;
+        padding: 2.5rem 1rem;
+    }
+
+    &__name-item {
     }
 }
 
+
 /*
-<h2 class="display__header">
-11月
-</h2>
-<div class="display__body">
-<div class="display__date-box">
-    <div class="display__date">11日</div>
-    <div class="display__character">モンキー・D・ルフィ</div>
-</div>
-</div>
+
+div.display
+	h2.display__header
+	div.display__body
+		div.display__date-box
+			div.display__date
+            ul.display__name-list
+                li.display__name-item
+
 */

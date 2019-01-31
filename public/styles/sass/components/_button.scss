@@ -1,0 +1,43 @@
+.button {
+    text-align: center;
+    display: block;
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+    transition: all .2s;
+
+    & i {
+        @include absCenter;
+    }
+
+    &--previous,
+    &--next{
+        @include absVerticalCenter;
+        font-size: 2.5rem;
+        color: rgba($color-black, .5);
+        
+        &:hover {
+            color: $color-black;
+
+            & i {
+                font-size: 3rem;
+            }
+        }
+
+        &:active {
+            & i {
+                font-size: 2.5rem;
+            }
+        }
+    }
+    &--previous {
+        left: 0;
+    }
+    &--next {
+        right: 0;
+    }
+
+
+
+}

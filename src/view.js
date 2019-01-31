@@ -10,7 +10,14 @@ import { getFilters } from './filters'
         body: 'display__body',
         dateBox: 'display__date-box',
         date: 'display__date',
-        character: 'display__character'
+        nameList: 'display__name-list',
+        nameItem: 'display__name-item'
+    }
+}
+
+const idNames = {
+    display: {
+        body: 'displayBody'
     }
 }
 
@@ -27,19 +34,22 @@ const generateDateBoxDOM = (date, characters) => {
     dateBoxEl.appendChild(dateEl)
 
     // create character name element
+    const nameListEl = document.createElement('ul')
+    nameListEl.classList.add(classNames.display.nameList)
     characters.forEach((character) => {
-        dateBoxEl.appendChild(generateCharacterEl(character))
+        nameListEl.appendChild(generateNameItemDOM(character))
     })
+    dateBoxEl.append(nameListEl)
 
     return dateBoxEl
 }
 
-const generateCharacterEl = ({ id, name }) => {
-    const characterEl = document.createElement('div')
-    characterEl.textContent = name
-    characterEl.classList.add(classNames.display.character)
-    characterEl.dataset.characterId = id
-    return characterEl
+const generateNameItemDOM = ({ id, name }) => {
+    const nameItem = document.createElement('li')
+    nameItem.textContent = name
+    nameItem.classList.add(classNames.display.nameItem)
+    nameItem.dataset.characterId = id
+    return nameItem
 }
 
 
@@ -50,10 +60,16 @@ const generateHeaderDOM = (month) => {
     return headerEl
 }
 
+const initializeHeaderDOM = (month) => {
+    const headerMonthEl = document.querySelector('#header-month')
+    headerMonthEl.textContent = `${month}月` 
+}
+
 
 const generateBodyDOM = (filteredDates) => {
     const bodyEl = document.createElement('div')
     bodyEl.classList.add(classNames.display.body)
+    bodyEl.id = idNames.display.body
 
     filteredDates.forEach(({date, characters}) => {
         bodyEl.appendChild(generateDateBoxDOM(date, characters))
@@ -65,12 +81,13 @@ const generateBodyDOM = (filteredDates) => {
 
 const renderDisplay = (month, filteredDates) => {
     const displayEl = document.querySelector('#display')
-    displayEl.innerHTML = ''
 
-    const headerEl = generateHeaderDOM(month)
-    displayEl.appendChild(headerEl)
+    initializeHeaderDOM(month)
 
-    const bodyEl = generateBodyDOM(filteredDates)
+    let bodyEl = document.getElementById(idNames.display.body)
+    if (bodyEl) bodyEl.remove()
+    
+    bodyEl = generateBodyDOM(filteredDates)
     displayEl.appendChild(bodyEl)
 }
 

@@ -5,10 +5,51 @@
     transform: translate(-50%, -50%);
 }
 
+@mixin absVerticalCenter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 @mixin clearfix {
     &::after {
         content: '';
         display: table;
         clear: both;
+    }
+}
+
+@mixin iconCheckedAnimation($second) {
+
+    & .icon-checkbox{
+        // opacity: 0;
+        float: right;
+        transform: translate(1.5rem, 0);
+
+        & + .icon {
+            position: relative;
+            transition: all $second;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        &:checked + .icon {
+            transform: rotate(360deg);
+            @content;
+        }
+    }
+}
+
+@mixin uTriggeredAnimation($options) {
+    & .u-trigger {
+        & + .u-target {
+            transition: all $options;
+        }
+
+        &:checked + .u-target {
+            @content;
+        }
     }
 }
