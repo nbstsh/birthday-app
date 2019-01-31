@@ -4,12 +4,12 @@ let dates = []
 const getDates = () => dates
 
 
-const initDates = (sortedCharacters) => {
+const initDates = (sortedCharacters, isSingle) => {
     dates = []
 
     sortedCharacters.forEach((character) => {
         const birthday = character.birthday.split('/')
-        const dateObj = dates.find((date) => date.month === birthday[0] && date.date === birthday[1])
+        const dateObj = isSingle ? null : dates.find((date) => date.month === birthday[0] && date.date === birthday[1])
 
         if (dateObj) {
             dateObj.characters.push(character)
