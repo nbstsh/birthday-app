@@ -70,3 +70,9 @@
         box-shadow: none;
     }
 }
+
+@mixin circleMiddle {
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 100px;
+}

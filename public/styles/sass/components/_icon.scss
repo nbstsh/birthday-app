@@ -1,41 +1,46 @@
 .icon {
     background-color: rgba($color-black, .3);
     color: white;
-    text-align: center;
-    display: block;
+    display: flex;
     position: relative;
-    width: 3.5rem;
-    height: 3.5rem;
-    transition: all .2s;
-    border-radius: 50%;
     font-size: 1.6rem;
     cursor: pointer;
-    
+
+    @include circleMiddle;
+
     &:hover {
-        background-color: rgba($color-black, .7);
+        background: $gradient-light;
     }
 
-    &:active {
-    }
-
-    &::after {
-        content: '';
-        display: block;
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: 50%;
-        background-color: rgba($color-black, .3);
-        opacity: 1;
-        transition: all .2s ease-out;
-    }
-
-    &:hover::after {
-        transform: scale(2);
-        opacity: 0;
-    }
 
     & * {
-        @include absCenter;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $circle-size;
+        height: $circle-size;
+        position: relative;
+        z-index: 1;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: rgba($color-black, .3);
+            opacity: 1;
+            transition: all .2s ease-out;
+            transform: scale(1);
+
+            @include circleMiddle;
+        }
+
+        &:hover::after {
+            transform: scale(2);
+            opacity: 0;
+        }
     }
 
 }
@@ -45,20 +50,24 @@
     position: absolute;
 
     & + .icon {
-        position: relative;
-        transition: all .5s;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
+        transition: width .3s .3s cubic-bezier(.7,-0.01,.4,1.7);
+
+        & * {
+            transition: transform .2s;
+        }
     }
 
     &:checked + .icon {
-        transform: rotate(360deg);
         background: $gradient-light;
+        width: 30rem;
+        justify-content: flex-start;
 
-        &::after {
-            background: $gradient-light;
+        & * {
+            transform: rotate(360deg);
+
+            &::after {
+                background: $gradient;
+            }
         }
 
     }
