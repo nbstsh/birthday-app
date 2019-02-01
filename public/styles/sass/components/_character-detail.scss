@@ -51,15 +51,12 @@
 
         &--memo {
             // border-bottom: 1px solid $color-grey-dark-1;
-            padding-bottom: 1rem;
+            padding-bottom: 3rem;
             // margin: 2rem;
         }
     }
 
     &__item-content {
-        // display: inline-block;
-        // font-size: 2rem;
-
         font-weight: lighter;
         margin-left: 1rem;
     }
@@ -70,23 +67,21 @@
         display: block;
     }
 
+    /* icon to open modal or form*/
     &__button-wrap {
         position: absolute;
-        top: 0;
-        right: 1rem;
+        top: -1rem;
+        right: -2rem;
     }
 
     &__button {
         display: inline-block;
         border: 1px solid $color-gray;
-        width: 4.5rem;
-        height: 4.5rem;
-        border-radius: 50%;
         position: relative;
         margin-right: .5rem;
         color: $color-black;
         transition: all .3s;
-
+        @include circleMiddle;
         @include buttonAnimation;
 
         & i {
