@@ -132,7 +132,7 @@ body {
     height: 5rem;
     width: 20rem;
     border-radius: 5px; }
-  .button--open-modal {
+  .button--open-modal, .button--create-memo {
     width: 20rem;
     height: 5rem;
     border-radius: 100px;
@@ -140,13 +140,13 @@ body {
     border: none;
     background: linear-gradient(to right bottom, #ffcece, #ceceff);
     position: relative; }
-    .button--open-modal:hover {
+    .button--open-modal:hover, .button--create-memo:hover {
       transform: translateY(-0.2rem);
       box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1); }
-    .button--open-modal:active {
+    .button--open-modal:active, .button--create-memo:active {
       transform: translateY(0);
       box-shadow: none; }
-    .button--open-modal::after {
+    .button--open-modal::after, .button--create-memo::after {
       content: '';
       position: absolute;
       top: 0;
@@ -159,7 +159,7 @@ body {
       opacity: 1;
       transform: scale(1);
       transition: all .3s; }
-    .button--open-modal:hover::after {
+    .button--open-modal:hover::after, .button--create-memo:hover::after {
       opacity: 0;
       transform: scale(1.5); }
 
@@ -726,22 +726,6 @@ body {
       list-style: circle; }
       .character-detail__item--memos ul li {
         padding: 1rem; }
-    .character-detail__item--memo-form {
-      padding: 4rem 3rem 2rem 3rem;
-      background-color: #f7f7f7;
-      border-radius: 5px;
-      transition: all .3s; }
-      .character-detail__item--memo-form[data-status="open"] {
-        opacity: 1;
-        visibility: visible;
-        height: auto; }
-      .character-detail__item--memo-form[data-status="close"] {
-        opacity: 0;
-        visibility: hidden;
-        height: 0;
-        margin: 0;
-        padding: 0;
-        animation: closeMemoForm .7s; }
   .character-detail__memo-item {
     cursor: pointer;
     overflow-wrap: break-word; }
@@ -811,7 +795,32 @@ body {
 
 .memo-form {
   text-align: center;
-  position: relative; }
+  position: relative;
+  padding: 4rem 3rem 2rem 3rem;
+  border-radius: 5px;
+  transition: all .3s;
+  z-index: 1;
+  /* background to close the create memo form */
+  /* setting to open/close the create memo form */ }
+  .memo-form__background {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; }
+  .memo-form[data-status="open"] {
+    opacity: 1;
+    visibility: visible;
+    height: auto; }
+  .memo-form[data-status="close"] {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    animation: closeMemoForm .7s; }
   .memo-form__close {
     position: absolute;
     top: -3.3rem;

@@ -238,39 +238,38 @@
         <div class="modal__container modal__container--detail">
             <div class="modal__header"></div>
             <div class="modal__body">
-                <ul class="character-detail">
-                    <li class="character-detail__button-wrap">
+                <div class="character-detail">
+                    <div class="character-detail__button-wrap">
                         <span class="character-detail__button" id="character-edit"><i class="fas fa-edit"></i></span>
                         <span class="character-detail__button" id="memo-form-open"><i class="far fa-sticky-note"></i></span>
                         <span class="character-detail__button" id="character-delete"><i class="fas fa-trash-alt"></i></span>
-                    </li>
-                    <li class="character-detail__item">
-                        <label class="character-detail__item-name">NAME</label>
-                        <h2 class="character-detail__item-content" id="character-detail-name">sample name</h2>
-                    </li>
-                    <li class="character-detail__item">
-                        <label class="character-detail__item-name">BIRTHDAY</label>
-                        <h2 class="character-detail__item-content" id="character-detail-birthday">11月 11日</h2>
-                    </li>
-                    <li class="character-detail__item character-detail__item--memos">
-                        <ul id="memo-list">
-                            <li>
-                                <textarea class="character-detail__textarea" rows="4"  id="memo-edit" data-id="sampleID">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt</textarea>
-                                <button class="character-detail__save-memo">save</button>
-                            </li>
-                            <!-- <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt </li>
-                            <li><textarea class="character-detail__textarea" rows="4" name="" id="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt</textarea></li>
-                            <li>alias impedit consequuntur facilis. Aut at deserunt alias consequatur id atque ducimus accusantium minus earum! Recusandae sint earum porro aliquid nobis</li> -->
-                        </ul>
-                    </li>
-                    <li class="character-detail__item character-detail__item--memo-form" id="memo-form-box" data-status="close">
-                        <div class="memo-form">
-                            <span class="memo-form__close" id="memo-form-close"><i class="fas fa-chevron-up"></i></span>
-                            <textarea class="memo-form__textarea" name="" cols="30" rows="5" placeholder="write new memo" id="memo-textarea"></textarea>
-                            <button class="memo-form__button" id="memo-create">CREATE NEW MEMO</button>
-                        </div>
-                    </li>
-                </ul>
+                    </div>
+                    <ul class="character-detail__list">
+                        <li class="character-detail__item">
+                            <label class="character-detail__item-name">NAME</label>
+                            <h2 class="character-detail__item-content" id="character-detail-name">sample name</h2>
+                        </li>
+                        <li class="character-detail__item">
+                            <label class="character-detail__item-name">BIRTHDAY</label>
+                            <h2 class="character-detail__item-content" id="character-detail-birthday">11月 11日</h2>
+                        </li>
+                        <li class="character-detail__item character-detail__item--memos">
+                            <label class="character-detail__item-name character-detail__item-name--memo">MEMO</label>
+                            <ul id="memo-list"></ul>
+                        </li>
+                    </ul>
+
+                    <!-- create memo form -->
+                    <div class="memo-form" id="memo-form-box" data-status="close">
+                        <span class="memo-form__close" id="memo-form-close"><i class="fas fa-chevron-up"></i></span>
+                        <textarea class="memo-form__textarea" name="" cols="30" rows="5" placeholder="write new memo" id="memo-textarea"></textarea>
+                        <!-- <button class="memo-form__button" id="memo-create">CREATE NEW MEMO</button> -->
+                        <button class="button button--create-memo" id="memo-create">CREATE NEW MEMO</button>
+                        <!-- transparent background in order to close create-memo-form -->
+                        <span class="close-modal memo-form__background" data-target="#memo-form-box" id="memo-form-background"></span>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
