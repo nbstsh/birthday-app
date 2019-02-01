@@ -59,7 +59,7 @@
 
     &:checked + .icon {
         background: $gradient-light;
-        width: 30rem;
+        width: $search-box-width;
         justify-content: flex-start;
 
         & * {

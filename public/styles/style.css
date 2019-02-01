@@ -476,7 +476,7 @@ body {
       transition: transform .2s; }
   .icon-checkbox:checked + .icon {
     background: linear-gradient(to right bottom, #ffcece, #ceceff);
-    width: 30rem;
+    width: 37rem;
     justify-content: flex-start; }
     .icon-checkbox:checked + .icon * {
       transform: rotate(360deg); }
@@ -525,85 +525,196 @@ body {
       width: 50%;
       box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.5); }
 
+/*
 .search {
-  max-width: 120rem;
-  text-align: center; }
-  .search__box {
-    position: relative;
-    padding: 1rem 5rem; }
-    .search__box--month label > .u-trigger + .u-target {
-      transition: all 0.2s; }
-    .search__box--month label > .u-trigger:checked + .u-target {
-      transform: scale(1.2);
-      color: black; }
-      .search__box--month label > .u-trigger:checked + .u-target::after {
+    
+    max-width: $display-max-width;
+    text-align: center;
+
+    // margin-top: 9rem;
+
+    &__box {
+        position: relative;
+        padding: 1rem 5rem;
+
+        &--month {
+
+            & label {
+                // animation for month number clicked
+                @include uTriggeredAnimation(.2s) {
+                    transform: scale(1.2);
+                    color: $color-black;
+    
+                    &::after {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+
+        &--character {
+            text-align: start;
+        }
+
+        // serach box style before animation
+        & > .u-target {
+            opacity: 0;
+            transform-origin: left bottom;
+            transform: translate(-50%, -80%) scale(0) rotate(-30deg);
+        }
+
+        // animtion to show search box
+        @include uTriggeredAnimation(.5s cubic-bezier(.73,.33,.18,1.25)) {
+            opacity: 1;
+            transform: translate(0) scale(1) rotate(0);
+        }
+    }
+
+
+    &__wrap {
+        background-image: $gradient-light;
+        padding: 1.5rem 3.5rem;
+        box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+        border-radius: 10rem;
+    }
+
+    &__month-number {
+        display: inline-block;
+        border-radius: 50%;
+        width: 3.5rem;
+        height: 3.5rem;
+        line-height: 3.5rem;
+        transition: all .3s;
+        cursor: pointer;
+        color: rgba($color-black, .7);
+        position: relative;
+
+        &:hover {
+            transform: scale(1.2);
+            color: rgba($color-black, 1);
+        }
+
+        &:active {
+            transform: scale(1.8) rotate(40deg);
+        }
+
+        &::after {
+            content: '';
+            display: inline-block;
+            border-radius: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            transition: all .3s;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 1px solid gray;
+            opacity: 0;
+            transform: scale(0);
+        }
+    }
+
+
+    &__input {
+        padding: 2rem 1rem;
+        height: 3rem;
+        width: 5rem;
+
+        &--date {
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        &--name {
+            width: 43rem;
+            margin-left: 3rem;
+        }
+    }
+
+    // pre animation setting
+    & > .u-target {
+        opacity: 0;
+        height: 0;
+        transform: translateY(-10rem);
+    }
+
+    // animation for search box to show
+    @include uTriggeredAnimation(.3s) {
         opacity: 1;
-        transform: scale(1); }
-    .search__box--character {
-      text-align: start; }
+        height: 8rem;
+        transform: translateY(0);
+    }
+}
+
+*/
+.search {
+  position: relative; }
+  .search__box {
+    position: absolute;
+    top: 0;
+    left: 0; }
     .search__box > .u-target {
       opacity: 0;
-      transform-origin: left bottom;
-      transform: translate(-50%, -80%) scale(0) rotate(-30deg); }
+      transform: scale(0.9);
+      visibility: hidden; }
     .search__box > .u-trigger + .u-target {
-      transition: all 0.5s cubic-bezier(0.73, 0.33, 0.18, 1.25); }
+      transition: all 0.3s 0.5s cubic-bezier(0.7, -0.01, 0.26, 1.75); }
     .search__box > .u-trigger:checked + .u-target {
       opacity: 1;
-      transform: translate(0) scale(1) rotate(0); }
+      transform: scale(1);
+      visibility: visible; }
   .search__wrap {
-    background-image: linear-gradient(to right bottom, #ffcece, #ceceff);
-    padding: 1.5rem 3.5rem;
-    box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
-    border-radius: 10rem; }
+    height: 4.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 4.5rem;
+    padding-right: calc(4.5rem * .5);
+    border-radius: 100px;
+    width: 37rem; }
   .search__month-number {
+    position: relative;
     display: inline-block;
-    border-radius: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
-    line-height: 3.5rem;
-    transition: all .3s;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.7);
-    position: relative; }
+    /* pre animation setting */
+    transform: scale(1);
+    font-size: 1.3rem;
+    color: #777; }
     .search__month-number:hover {
       transform: scale(1.2);
       color: black; }
     .search__month-number:active {
       transform: scale(1.8) rotate(40deg); }
-    .search__month-number::after {
-      content: '';
-      display: inline-block;
-      border-radius: 50%;
-      width: 3.5rem;
-      height: 3.5rem;
-      line-height: 3.5rem;
-      transition: all .3s;
-      position: absolute;
-      top: 0;
-      right: 0;
-      border: 1px solid gray;
-      opacity: 0;
-      transform: scale(0); }
+  .search__box--month label > .u-trigger + .u-target {
+    transition: all 0.2s; }
+  .search__box--month label > .u-trigger:checked + .u-target {
+    transform: scale(1.2);
+    font-weight: bold;
+    background: linear-gradient(to right bottom, #ff8181, #8181ff);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text; }
   .search__input {
-    padding: 2rem 1rem;
-    height: 3rem;
-    width: 5rem; }
-    .search__input--date::-webkit-inner-spin-button, .search__input--date::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0; }
+    height: calc(4.5rem * .6);
+    padding-left: 1rem;
+    border-radius: 3px;
+    font-size: 1.3rem; }
+    .search__input--date {
+      flex-grow: 1;
+      flex-basis: 6rem;
+      margin: 0 1rem;
+      text-align: center; }
+      .search__input--date::-webkit-inner-spin-button, .search__input--date::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0; }
     .search__input--name {
-      width: 43rem;
-      margin-left: 3rem; }
-  .search > .u-target {
-    opacity: 0;
-    height: 0;
-    transform: translateY(-10rem); }
+      flex-grow: 5; }
   .search > .u-trigger + .u-target {
     transition: all 0.3s; }
-  .search > .u-trigger:checked + .u-target {
-    opacity: 1;
-    height: 8rem;
-    transform: translateY(0); }
 
 .character-detail {
   position: relative; }

@@ -76,3 +76,12 @@
     height: $circle-size;
     border-radius: 100px;
 }
+
+
+@mixin textClip($background) {
+    background: $background;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+}
