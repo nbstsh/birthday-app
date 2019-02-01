@@ -83,5 +83,9 @@
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+}
 
+@mixin memoCardSize {
+    width: $memo-card-width;
+    height: $memo-card-height;
 }

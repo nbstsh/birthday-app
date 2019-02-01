@@ -26,7 +26,8 @@ const className = {
     memoTextarea: 'character-detail__textarea',
     memoListItem: 'character-detail__memo-item',
     whiteSpacePre: 'u-white-space-pre',
-    memoEditBackground: 'character-detail__memo-edit-bg'
+    memoEditBackground: 'character-detail__memo-edit-bg',
+    emptyMemoEl: 'empty-message'
 }
 
 
@@ -73,9 +74,22 @@ const renderMemos = () => {
     const memos = findMemos(extractCharacterId())
     const memoListEl = document.querySelector(selector.memoList)
     memoListEl.innerHTML = ''
+    if (memos.length === 0) {
+        memoListEl.append(generateEmptyMemoEl())
+        return 
+    }
     memos.forEach((memo) => {
         memoListEl.append(generateMemoEl(memo))
     })
+}
+
+const generateEmptyMemoEl = () => {
+    const emptyMessage = 'There is no memo to show. Create new memo!'
+
+    const emptyMemoEl = document.createElement('li')
+    emptyMemoEl.textContent = emptyMessage
+    emptyMemoEl.classList.add(className.emptyMemoEl)
+    return emptyMemoEl
 }
 
 const generateMemoEl = ({id, text}) => {
@@ -136,6 +150,12 @@ const initMemoEditFormBackgroundEvent = () => {
     })
 }
 
+const initMemoFormOpenEvent = (emptyMemoEl) => {
+    emptyMemoEl.addEventListener('click', () => {
+        openMemoForm()
+    })
+}
+
 const closeMemoEditForm = (textareaEl) => {
     const characterId = extractCharacterId()
     const id = textareaEl.dataset.id
@@ -186,11 +206,6 @@ document.querySelector(selector.memoFormOpenButton).addEventListener('click', (e
     openMemoForm()
 })
 
-// close create-memo form
-document.querySelector(selector.memoFormCloseButton).addEventListener('click', (e) => {
-    closeMemoForm()
-})
-
 // create new memo
 document.querySelector(selector.createMemoButton).addEventListener('click', (e) => {
     const id = extractCharacterId()
@@ -217,7 +232,6 @@ const startObserveMemoListItem = (memoListEl) => {
         if (!node) return 
 
         const isContained = (className) => node.classList.contains(className)
-
         if (isContained(className.memoListItem)) {
             initMemoItemEvent(node)
         }
@@ -236,6 +250,12 @@ const startObserveMemoList = () => {
         const listEl = mutation.addedNodes[0]  
         if (!listEl) return 
 
+        // init event listener for empty memo element
+        if (listEl.classList.contains(className.emptyMemoEl)) {
+            initMemoFormOpenEvent(listEl)
+            return 
+        }
+        // init event listener for memo list-item element
         initMemoItemEvent(listEl.firstChild)
         startObserveMemoListItem(listEl)
     }

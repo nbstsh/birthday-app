@@ -1,8 +1,10 @@
 .memo-form {
-    text-align: center;
+    // text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     padding: 4rem 3rem 2rem 3rem;
-    border-radius: 5px;
     transition: all .3s;
     z-index: 1;
 
@@ -42,15 +44,17 @@
     }
 
     &__textarea {
-        width: 100%;
+        @include memoCardSize;
         resize: none;
         outline: none;
-        border: 1px solid $color-gray;
-        border-radius: 5px;
+        border: none;
+        // border-radius: 5px;
         padding: 1rem;
         font-size: inherit;
         font-family: inherit;
         margin-bottom: 1rem;
+
+        box-shadow: $shadow-light-2;
     }
 
     &__button {

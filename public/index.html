@@ -241,7 +241,6 @@
                 <div class="character-detail">
                     <div class="character-detail__button-wrap">
                         <span class="character-detail__button" id="character-edit"><i class="fas fa-edit"></i></span>
-                        <span class="character-detail__button" id="memo-form-open"><i class="far fa-sticky-note"></i></span>
                         <span class="character-detail__button" id="character-delete"><i class="fas fa-trash-alt"></i></span>
                     </div>
                     <ul class="character-detail__list">
@@ -255,13 +254,13 @@
                         </li>
                         <li class="character-detail__item character-detail__item--memos">
                             <label class="character-detail__item-name character-detail__item-name--memo">MEMO</label>
+                            <span class="character-detail__button character-detail__button--memo" id="memo-form-open"><i class="far fa-sticky-note"></i></span>
                             <ul id="memo-list"></ul>
                         </li>
                     </ul>
 
                     <!-- create memo form -->
                     <div class="memo-form" id="memo-form-box" data-status="close">
-                        <span class="memo-form__close" id="memo-form-close"><i class="fas fa-chevron-up"></i></span>
                         <textarea class="memo-form__textarea" name="" cols="30" rows="5" placeholder="write new memo" id="memo-textarea"></textarea>
                         <!-- <button class="memo-form__button" id="memo-create">CREATE NEW MEMO</button> -->
                         <button class="button button--create-memo" id="memo-create">CREATE NEW MEMO</button>
