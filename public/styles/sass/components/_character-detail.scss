@@ -1,47 +1,73 @@
 .character-detail {
     position: relative;
-
+    
     &__item {
-        padding: .5em 1rem;
-        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 3rem;
 
-        &--memos ul{
-            padding-left: 3rem;
-            list-style: circle;
+        &--date {
+            width: 60%;
+            margin: 0 auto;
+            border-bottom: 1px solid $color-grey-dark-2;
+            padding-bottom: 1.5rem;
+        }
 
-            & li {
-                padding: 1rem;
+        &--memos {
+            flex-direction: column;
+            justify-content: stretch;
+            align-items: stretch;
+
+            border: 1px solid $color-grey-dark-2;
+            padding: 2rem;
+            border-radius: $radius;
+            margin-top: 4rem;
+
+            & ul {
+                list-style: none;
+
+                display: grid;
+                grid-template-rows: repeat(auto-fit, minmax(2rem, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+                grid-gap: 1.8rem;
+                
+                & li {
+                    padding: 1rem;
+                    box-shadow: $shadow-light-2;
+                }
             }
         }
+        
+    }
+
+    &__item-name {
+
+        font-weight: bold;
+        @include textClip($gradient);
+        flex: 0 0 20%;
+        display: flex;
+        justify-content: center;
+
+        &--memo {
+            // border-bottom: 1px solid $color-grey-dark-1;
+            padding-bottom: 1rem;
+            // margin: 2rem;
+        }
+    }
+
+    &__item-content {
+        // display: inline-block;
+        // font-size: 2rem;
+
+        font-weight: lighter;
+        margin-left: 1rem;
     }
 
     &__memo-item {
         cursor: pointer;
         overflow-wrap: break-word;
-    }
-
-    &__item-name {
-        display: inline-block;
-        width: 12rem;
-        height: 3rem;
-        line-height: 3rem;
-        text-align: center;
-        background: $gradient;
-        border-radius: 3px;
-        color: transparent;
-        font-weight: bold;
-        -webkit-background-clip: text;
-        background-clip: text;
-
-        &--memo {
-
-        }
-    }
-
-    &__item-content {
-        display: inline-block;
-        font-size: 2rem;
-        font-weight: lighter;
+        display: block;
     }
 
     &__button-wrap {

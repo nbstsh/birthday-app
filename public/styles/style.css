@@ -719,32 +719,50 @@ body {
 .character-detail {
   position: relative; }
   .character-detail__item {
-    padding: .5em 1rem;
-    margin-top: 1.5rem; }
-    .character-detail__item--memos ul {
-      padding-left: 3rem;
-      list-style: circle; }
-      .character-detail__item--memos ul li {
-        padding: 1rem; }
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3rem; }
+    .character-detail__item--date {
+      width: 60%;
+      margin: 0 auto;
+      border-bottom: 1px solid #777;
+      padding-bottom: 1.5rem; }
+    .character-detail__item--memos {
+      flex-direction: column;
+      justify-content: stretch;
+      align-items: stretch;
+      border: 1px solid #777;
+      padding: 2rem;
+      border-radius: 5px;
+      margin-top: 4rem; }
+      .character-detail__item--memos ul {
+        list-style: none;
+        display: grid;
+        grid-template-rows: repeat(auto-fit, minmax(2rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+        grid-gap: 1.8rem; }
+        .character-detail__item--memos ul li {
+          padding: 1rem;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3); }
+  .character-detail__item-name {
+    font-weight: bold;
+    background: linear-gradient(to right bottom, #ff8181, #8181ff);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center; }
+    .character-detail__item-name--memo {
+      padding-bottom: 1rem; }
+  .character-detail__item-content {
+    font-weight: lighter;
+    margin-left: 1rem; }
   .character-detail__memo-item {
     cursor: pointer;
-    overflow-wrap: break-word; }
-  .character-detail__item-name {
-    display: inline-block;
-    width: 12rem;
-    height: 3rem;
-    line-height: 3rem;
-    text-align: center;
-    background: linear-gradient(to right bottom, #ff8181, #8181ff);
-    border-radius: 3px;
-    color: transparent;
-    font-weight: bold;
-    -webkit-background-clip: text;
-    background-clip: text; }
-  .character-detail__item-content {
-    display: inline-block;
-    font-size: 2rem;
-    font-weight: lighter; }
+    overflow-wrap: break-word;
+    display: block; }
   .character-detail__button-wrap {
     position: absolute;
     top: 0;
