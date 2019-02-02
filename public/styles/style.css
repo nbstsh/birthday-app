@@ -606,10 +606,11 @@ body {
       border-bottom: 1px solid #777;
       padding-bottom: 1.5rem; }
     .character-detail__item--memos {
+      max-height: 60vh;
       flex-direction: column;
       justify-content: stretch;
       align-items: stretch;
-      border: 1px solid #777;
+      border: 1px solid #999;
       padding: 2rem;
       border-radius: 5px;
       margin-top: 4rem;
@@ -617,24 +618,32 @@ body {
       position: relative; }
       .character-detail__item--memos ul {
         list-style: none;
-        display: grid;
-        grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
-        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-        grid-gap: 1.8rem;
+        overflow: scroll;
+        min-height: 10rem;
+        padding: 1rem;
         background-color: #f4f2f2;
-        padding: 1rem; }
+        border: 1px solid #f4f2f2;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+        display: grid;
+        grid-template-rows: repeat(auto-fill, minmax(10rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+        grid-gap: 1.8rem; }
         .character-detail__item--memos ul li {
           padding: 1rem;
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
           background-color: white;
-          min-height: 10rem;
-          max-width: 25rem; }
+          position: relative;
+          color: #595959;
+          min-height: 10rem; }
+          .character-detail__item--memos ul li:hover {
+            color: #333; }
           .character-detail__item--memos ul li.empty-message {
             box-shadow: none;
             margin: 2rem 0;
             cursor: pointer;
             background-color: transparent;
             min-width: 100%;
+            grid-column: 1 / -1;
             display: flex;
             align-items: center;
             justify-content: center; }
@@ -653,7 +662,8 @@ body {
     display: flex;
     justify-content: center; }
     .character-detail__item-name--memo {
-      padding-bottom: 3rem; }
+      flex-basis: 3rem;
+      padding-bottom: 5rem; }
   .character-detail__item-content {
     font-weight: lighter;
     margin-left: 1rem; }
@@ -693,6 +703,7 @@ body {
       transform: translate(-50%, -50%); }
   .character-detail__textarea {
     width: 100%;
+    height: 100%;
     min-height: 10rem;
     outline: none;
     resize: none;
@@ -701,8 +712,8 @@ body {
     padding: 1rem;
     border: 1px solid gray;
     position: relative;
-    z-index: 1;
-    animation: fadeInFromBottom .5s; }
+    animation: fadeInFromBottom .5s;
+    z-index: 101; }
   .character-detail__memo-edit-bg {
     content: '';
     position: absolute;
@@ -710,7 +721,8 @@ body {
     left: 0;
     width: 30rem;
     height: 30rem;
-    transform: scale(10); }
+    transform: scale(10);
+    z-index: 100; }
 
 .memo-form {
   display: flex;

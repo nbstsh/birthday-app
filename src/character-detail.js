@@ -122,8 +122,12 @@ const renderMemoEditForm = (memoEl) => {
     const id = memoEl.dataset.id
     const text = memoEl.textContent
     const memoListEl = memoEl.parentElement
+    const memoEditEl = generateMemoEditEl(id, text)
+    // set textarea height depending on the memo card height
+    memoEditEl.style.height = `${memoEl.offsetHeight}px`
+
     memoListEl.innerHTML = ''
-    memoListEl.append(generateMemoEditEl(id, text))
+    memoListEl.append(memoEditEl)
     memoListEl.append(generateMemoEditBackgroundEl())
 }
 

@@ -15,11 +15,12 @@
         }
 
         &--memos {
+            max-height: 60vh;
             flex-direction: column;
             justify-content: stretch;
             align-items: stretch;
 
-            border: 1px solid $color-grey-dark-2;
+            border: 1px solid $color-grey-dark-3;
             padding: 2rem;
             border-radius: $radius;
             margin-top: 4rem;
@@ -29,24 +30,30 @@
 
             & ul {
                 list-style: none;
+                overflow: scroll;
+                min-height: 10rem;
+                padding: 1rem;
+                background-color: $color-grey-light-2;
+                border: 1px solid $color-grey-light-2;
+                box-shadow: $shadow-inset-light;
 
                 display: grid;
-                grid-template-rows: repeat(auto-fit, minmax($memo-card-height, 1fr));
-                grid-template-columns: repeat(auto-fit, minmax($memo-card-width, 1fr));
+                grid-template-rows: repeat(auto-fill, minmax($memo-card-height, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax($memo-card-width, 1fr));
                 grid-gap: 1.8rem;
 
-                background-color: $color-grey-light-2;
-                padding: 1rem;
                 
                 & li {
                     padding: 1rem;
                     box-shadow: $shadow-light-2;
                     background-color: white;
+                    position: relative;
+                    color: lighten($color-grey-dark-1, 15);
+                    min-height: $memo-card-height; 
 
-
-                    // TODO: media query で responsiveに
-                    min-height: $memo-card-height; // grid-tamplate-rowsでmin を$memo-card-heightに指定しているのにそうならない場合がある
-                    max-width: $memo-card-width;   // これを設定しておかないとgridが一つの時とかにサイズがおかしくなる
+                    &:hover {
+                        color: $color-grey-dark-1;
+                    }
 
                     &.empty-message {
                         box-shadow: none;
@@ -54,6 +61,7 @@
                         cursor: pointer;
                         background-color: transparent;
                         min-width: 100%;
+                        grid-column: 1 / -1;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -62,6 +70,7 @@
                             @include textClip($gradient);
                         }
                     }
+
                 }
             }
         }
@@ -77,9 +86,8 @@
         justify-content: center;
 
         &--memo {
-            // border-bottom: 1px solid $color-grey-dark-1;
-            padding-bottom: 3rem;
-            // margin: 2rem;
+            flex-basis: 3rem;
+            padding-bottom: 5rem;
         }
     }
 
@@ -126,6 +134,7 @@
     /* textarea inside memo card*/
     &__textarea {
         width: 100%;
+        height: 100%;
         min-height: $memo-card-height;
         outline: none;
         resize: none;
@@ -134,8 +143,8 @@
         padding: 1rem;
         border: 1px solid $color-gray;
         position: relative;
-        z-index: 1;
         animation: fadeInFromBottom .5s;
+        z-index: 101;
     }
 
     &__memo-edit-bg {
@@ -146,5 +155,6 @@
         width: 30rem;
         height: 30rem;
         transform: scale(10);
+        z-index: 100;
     }
 }
