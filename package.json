@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-server": "webpack-dev-server --mode development",
-    "compile:sass": "node-sass public/styles/sass/main.scss public/styles/style.css -w",
+    "compile:sass": "node-sass sass/main.scss public/styles/style.css -w",
     "start": "npm-run-all --parallel dev-server compile:sass",
     "build": "webpack --mode production"
   },

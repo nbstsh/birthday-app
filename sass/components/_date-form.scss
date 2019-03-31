@@ -1,5 +1,9 @@
 .date-form {
 
+    @include respond(tab-port) {
+        padding-top: 3rem;
+    }
+
     &__month {
         display: flex;
         justify-content: space-evenly;
@@ -7,6 +11,9 @@
         margin: 0 auto;
         position: relative;
 
+        @include respond(tab-port) {
+            padding-bottom: 4rem;
+        }
 
         &::after {
             content: 'Month';
@@ -19,6 +26,10 @@
             color: $color-gray;
 
             @include labelFont;
+
+            @include respond(tab-port) {
+                top: -5.5rem;
+            }
         }
     }
 
@@ -81,6 +92,10 @@
             transform: translateX(-2rem);
 
             @include labelFont;
+
+            @include respond(tab-port) {
+                top: -5.5rem;
+            }
         }
     }   
 

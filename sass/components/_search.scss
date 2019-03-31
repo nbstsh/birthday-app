@@ -1,0 +1,109 @@
+.search {
+
+    position: relative;
+    
+    &__box {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &--character {
+        }
+
+        // serach box style before animation
+        & > .u-target {
+            opacity: 0;
+            transform: scale(.9);
+            visibility: hidden;
+        }
+
+        // animtion to show search box
+        @include uTriggeredAnimation(.3s .3s cubic-bezier(.7,-0.01,.26,1.75)) {
+            opacity: 1;
+            transform: scale(1);
+            visibility: visible;
+        }
+    }
+
+    &__wrap {
+        height: $circle-size;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-left: $circle-size;
+        padding-right: calc(#{$circle-size} * .5);
+        border-radius: 100px;
+        width: $search-box-width;
+
+        @include respond(tab-port) {
+            height: $circle-size-large;
+            padding-left: $circle-size-large;
+            padding-right: calc(#{$circle-size-large} * .5);
+            width: $search-box-width-large;
+        }
+    }
+
+    &__month-number {
+        position: relative;
+        display: inline-block;
+        
+        &:hover {
+            transform: scale(1.2);
+            color: rgba($color-black, 1);
+        }
+
+        &:active {
+            transform: scale(1.8) rotate(40deg);
+        }
+
+        /* month number pre animation setting */
+        transform: scale(1);
+        font-size: $font-size-small;
+        color: $color-grey-dark-2;
+    }
+
+    // month number animation
+    &__box--month label {
+        @include uTriggeredAnimation(.2s) {
+            transform: scale(1.2);
+            font-weight: bold;
+            @include textClip($gradient);
+        }
+    }
+
+
+    &__input {
+        height: calc(#{$circle-size} * .6);
+        padding-left: 1rem;
+        border-radius: 3px;
+        font-size: $font-size-small;
+
+        @include respond(tab-port) {
+            height: calc(#{$circle-size-large} * .6);
+        }
+        
+        &--date {
+            flex-grow: 1;
+            flex-basis: 6rem;
+            margin: 0 1rem;
+            text-align: center;
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        &--name {
+            flex-grow: 5;
+        }
+    }
+
+    // pre animation setting
+    & > .u-target {
+    }
+
+    // animation for search box to show
+    @include uTriggeredAnimation(.3s) {
+    }
+}

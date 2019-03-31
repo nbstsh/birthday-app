@@ -1,0 +1,95 @@
+.icon {
+    background-color: rgba($color-black, .3);
+    color: white;
+    display: flex;
+    position: relative;
+    font-size: 1.6rem;
+    cursor: pointer;
+
+    @include circleMiddle;
+
+    @include respond(tab-port) {
+        @include circleLarge;
+    }
+
+    &:hover {
+        background: $gradient-light;
+    }
+
+
+    & * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $circle-size;
+        height: $circle-size;
+        position: relative;
+        z-index: 1;
+
+        @include respond(tab-port) {
+            width: $circle-size-large;
+            height: $circle-size-large;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: rgba($color-black, .3);
+            opacity: 1;
+            transition: all .2s ease-out;
+            transform: scale(1);
+
+            @include circleMiddle;
+
+            @include respond(tab-port) {
+                @include circleLarge;
+            }
+        }
+
+        &:hover::after {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+}
+
+.icon-checkbox{
+    opacity: 0;
+    position: absolute;
+
+    & + .icon {
+        /* animation to widen search box area*/
+        transition: width .25s .15s cubic-bezier(.7,-0.01,.4,1.3);
+
+        & * {
+            /* animation to rotate icon */
+            transition: transform .15s;
+        }
+    }
+
+    &:checked + .icon {
+        background: $gradient-light;
+        width: $search-box-width;
+        justify-content: flex-start;
+
+        @include respond(tab-port) {
+            width: $search-box-width-large;
+        }
+
+        & * {
+            transform: rotate(360deg);
+
+            &::after {
+                background: $gradient;
+            }
+        }
+
+    }
+
+    
+}

@@ -1,0 +1,160 @@
+.character-detail {
+    position: relative;
+    
+    &__item {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 3rem;
+
+        &--date {
+            width: 60%;
+            margin: 0 auto;
+            border-bottom: 1px solid $color-grey-dark-2;
+            padding-bottom: 1.5rem;
+        }
+
+        &--memos {
+            max-height: 60vh;
+            flex-direction: column;
+            justify-content: stretch;
+            align-items: stretch;
+
+            border: 1px solid $color-grey-dark-3;
+            padding: 2rem;
+            border-radius: $radius;
+            margin-top: 4rem;
+
+            /* for open memo form button */
+            position: relative;
+
+            & ul {
+                list-style: none;
+                overflow: scroll;
+                min-height: 30rem;
+                padding: 3rem;
+                background-color: $color-grey-light-2;
+                border: 1px solid $color-grey-light-2;
+                box-shadow: $shadow-inset-light;
+
+                display: grid;
+                grid-template-rows: repeat(auto-fill, minmax($memo-card-height, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax($memo-card-width, 1fr));
+                grid-gap: 1.8rem;
+
+                
+                & li {
+                    padding: 1rem;
+                    box-shadow: $shadow-light-2;
+                    background-color: white;
+                    position: relative;
+                    color: lighten($color-grey-dark-1, 15);
+                    min-height: $memo-card-height; 
+
+                    &:hover {
+                        color: $color-grey-dark-1;
+                    }
+
+                    &.empty-message {
+                        box-shadow: none;
+                        margin: 2rem 0;
+                        cursor: pointer;
+                        background-color: transparent;
+                        min-width: 100%;
+                        grid-column: 1 / -1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        &:hover {
+                            @include textClip($gradient);
+                        }
+                    }
+
+                }
+            }
+        }
+        
+    }
+
+    &__item-name {
+
+        font-weight: bold;
+        @include textClip($gradient);
+        flex: 0 0 20%;
+        display: flex;
+        justify-content: center;
+
+        &--memo {
+            flex-basis: 3rem;
+            padding-bottom: 5rem;
+        }
+    }
+
+    &__item-content {
+        font-weight: lighter;
+        margin-left: 1rem;
+    }
+
+    &__memo-item {
+        cursor: pointer;
+        overflow-wrap: break-word;
+        display: block;
+    }
+
+    /* icon to open modal or form*/
+    &__button-wrap {
+        position: absolute;
+        top: -1rem;
+        right: -2rem;
+    }
+
+    &__button {
+        display: inline-block;
+        border: 1px solid $color-gray;
+        position: relative;
+        margin-right: .5rem;
+        color: $color-black;
+        transition: all .3s;
+        @include circleMiddle;
+        @include buttonAnimation;
+
+        &--memo {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+        }
+
+        & i {
+            font-size: 2rem;
+            @include absCenter;
+        }
+    }
+
+    /* textarea inside memo card*/
+    &__textarea {
+        width: 100%;
+        height: 100%;
+        min-height: $memo-card-height;
+        outline: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 1rem;
+        border: 1px solid $color-gray;
+        position: relative;
+        animation: fadeInFromBottom .5s;
+        z-index: 101;
+    }
+
+    &__memo-edit-bg {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30rem;
+        height: 30rem;
+        transform: scale(10);
+        z-index: 100;
+    }
+}

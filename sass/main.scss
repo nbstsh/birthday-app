@@ -1,7 +1,7 @@
 
 @import "abstracts/functions";
-@import "abstracts/variables";
 @import "abstracts/mixins";
+@import "abstracts/variables";
 
 @import "base/animation";
 @import "base/base";
@@ -16,7 +16,7 @@
 @import "components/icon";
 @import "components/modal";
 @import "components/search";
-@import "components/character-detail.scss";
+@import "components/character-detail";
 @import "components/memo-form";
 
 @import "layout/grid";
