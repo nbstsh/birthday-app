@@ -274,12 +274,19 @@ body {
       transform: translateY(0);
       box-shadow: none; }
 
+@media only screen and (max-width: 56.25em) {
+  .date-form {
+    padding-top: 3rem; } }
+
 .date-form__month {
   display: flex;
   justify-content: space-evenly;
   width: 80%;
   margin: 0 auto;
   position: relative; }
+  @media only screen and (max-width: 56.25em) {
+    .date-form__month {
+      padding-bottom: 4rem; } }
   .date-form__month::after {
     content: 'Month';
     height: 3rem;
@@ -291,6 +298,9 @@ body {
     color: gray;
     color: gray;
     letter-spacing: .4rem; }
+    @media only screen and (max-width: 56.25em) {
+      .date-form__month::after {
+        top: -5.5rem; } }
 
 .date-form__month-number {
   cursor: pointer;
@@ -340,6 +350,9 @@ body {
     transform: translateX(-2rem);
     color: gray;
     letter-spacing: .4rem; }
+    @media only screen and (max-width: 56.25em) {
+      .date-form__date::after {
+        top: -5.5rem; } }
 
 .date-form__date-number {
   width: 2rem;
@@ -573,6 +586,14 @@ body {
     box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
     height: 90vh;
     overflow-y: scroll; }
+    @media only screen and (max-width: 56.25em) {
+      .modal__container {
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh; } }
+    @media only screen and (max-width: 37.5em) {
+      .modal__container {
+        padding: 1rem 0; } }
     .modal__container--confirmation {
       padding: 2rem;
       min-width: 45rem;
@@ -680,7 +701,7 @@ body {
       .character-detail__item--memos ul {
         list-style: none;
         overflow: scroll;
-        min-height: 10rem;
+        min-height: 30rem;
         padding: 3rem;
         background-color: #f4f2f2;
         border: 1px solid #f4f2f2;
