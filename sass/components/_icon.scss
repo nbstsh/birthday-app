@@ -8,6 +8,10 @@
 
     @include circleMiddle;
 
+    @include respond(tab-port) {
+        @include circleLarge;
+    }
+
     &:hover {
         background: $gradient-light;
     }
@@ -22,6 +26,11 @@
         position: relative;
         z-index: 1;
 
+        @include respond(tab-port) {
+            width: $circle-size-large;
+            height: $circle-size-large;
+        }
+
         &::after {
             content: '';
             display: block;
@@ -35,6 +44,10 @@
             transform: scale(1);
 
             @include circleMiddle;
+
+            @include respond(tab-port) {
+                @include circleLarge;
+            }
         }
 
         &:hover::after {
@@ -63,6 +76,10 @@
         background: $gradient-light;
         width: $search-box-width;
         justify-content: flex-start;
+
+        @include respond(tab-port) {
+            width: $search-box-width-large;
+        }
 
         & * {
             transform: rotate(360deg);

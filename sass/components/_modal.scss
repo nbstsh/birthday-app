@@ -45,6 +45,8 @@
         padding: 3rem 5rem;
         border-radius: 5px;
         box-shadow: 0 1rem 1.5rem rgba($color-black, .2);
+        height: 90vh;
+        overflow-y: scroll;
 
         &--character {
         }

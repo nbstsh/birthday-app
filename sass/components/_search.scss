@@ -34,6 +34,13 @@
         padding-right: calc(#{$circle-size} * .5);
         border-radius: 100px;
         width: $search-box-width;
+
+        @include respond(tab-port) {
+            height: $circle-size-large;
+            padding-left: $circle-size-large;
+            padding-right: calc(#{$circle-size-large} * .5);
+            width: $search-box-width-large;
+        }
     }
 
     &__month-number {
@@ -70,6 +77,10 @@
         padding-left: 1rem;
         border-radius: 3px;
         font-size: $font-size-small;
+
+        @include respond(tab-port) {
+            height: calc(#{$circle-size-large} * .6);
+        }
         
         &--date {
             flex-grow: 1;

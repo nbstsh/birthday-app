@@ -13,20 +13,64 @@
 
     margin-top: 5rem;
 
+    @include respond(tab-port) {
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+
     &__header {
         padding: 2rem 2em 2rem 10rem;
         display: flex;
         justify-content: space-between;
         background-color: $color-white;
         border-bottom: 1px solid $color-grey-light-3;
+
+        @include respond(tab-port) {
+            position: relative;
+        }
     }
 
     &__header-icons {
         display: flex;
+        @include respond(tab-land) {
+            position: relative;
+        }
 
         & li {
             margin: 0 1rem;
+
+            &:nth-child(1) {
+                @include respond(tab-land) {
+                    position: absolute;
+                    right: 5.5rem;
+                    z-index: 1;
+                }
+
+                @include respond(tab-port) {
+                    position: fixed;
+                    bottom: 18rem;
+                    right: 1vw;
+                    z-index: 1;
+                }
+            }
+            &:nth-child(2) {
+                @include respond(tab-land) {
+                    position: absolute;
+                    right: 0;
+                    z-index: 2;
+                }
+
+                @include respond(tab-port) {
+                    position: fixed;
+                    bottom: 10rem;
+                    right: 1vw;
+                    z-index: 1;
+                }
+            }
         }        
+
     }
 
     &__body {
